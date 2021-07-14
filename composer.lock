@@ -469,12 +469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maria-cpp/php-mvc-core.git",
-                "reference": "42eb9a67e92d993ba63133246f168300d155622e"
+                "reference": "d6c2d86af501fc17e41aeb5aabda31ac893016e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maria-cpp/php-mvc-core/zipball/42eb9a67e92d993ba63133246f168300d155622e",
-                "reference": "42eb9a67e92d993ba63133246f168300d155622e",
+                "url": "https://api.github.com/repos/Maria-cpp/php-mvc-core/zipball/d6c2d86af501fc17e41aeb5aabda31ac893016e5",
+                "reference": "d6c2d86af501fc17e41aeb5aabda31ac893016e5",
                 "shasum": ""
             },
             "default-branch": true,
@@ -493,9 +493,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Maria-cpp/php-mvc-core/issues",
-                "source": "https://github.com/Maria-cpp/php-mvc-core/tree/v.0.1.3"
+                "source": "https://github.com/Maria-cpp/php-mvc-core/tree/master"
             },
-            "time": "2021-07-13T12:47:56+00:00"
+            "time": "2021-07-14T06:13:29+00:00"
         }
     ],
     "packages-dev": [],
