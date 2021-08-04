@@ -80,7 +80,7 @@ class SiteController extends Controller
             'name' => "Admin"
         ];
         Application::$app->layout = 'admin';
-        Application::$app->controller->setLayout('admin');
+        Application::$app->controller->setLayout('dashboard');
         return $this->render('dashboard' , $params);
     }
     public function category()
