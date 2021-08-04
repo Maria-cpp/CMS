@@ -1,7 +1,5 @@
 <?php
 use zum\phpmvc\Application;
-//echo '<pre>';
-//var_dump($this);
 ?>
 
 <!doctype html>
@@ -15,13 +13,13 @@ use zum\phpmvc\Application;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
     <title><?php echo $this->title ?></title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">MVC </a>
+        <a class="navbar-brand" href="#">CMS </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler"></span>
         </button>
@@ -29,6 +27,15 @@ use zum\phpmvc\Application;
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/category">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tags">Tags</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
@@ -49,7 +56,7 @@ use zum\phpmvc\Application;
                     <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName()?>
+                    <a class="nav-link" href="/logout">Welcome <?php echo $_SESSION['username']?>
                     (Logout)
                     </a>
                 </li>

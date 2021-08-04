@@ -7,7 +7,7 @@ namespace app\models;
 use JetBrains\PhpStorm\ArrayShape;
 use zum\phpmvc\Model;
 
-class Blogposts extends Model
+class Post extends Model
 {
     public string $title = '';
     public string $description = '';
