@@ -2,7 +2,8 @@
 
 /** @var $this \zum\phpmvc\View */
 
-$this->title = 'Home'
+$this->title = 'Home';
+session_start();
 
 ?>
 

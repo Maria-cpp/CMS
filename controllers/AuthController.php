@@ -24,19 +24,19 @@ class AuthController extends Controller
         $loginFOrm = new LoginForm();
         if($request->isPost()){
             $loginFOrm->loadData($request->getBody());
-            echo Application::$app->session->get('role');
+//            echo Application::$app->session->get('role');
 
             if($loginFOrm->validate() && $loginFOrm->login(Application::$app->db)){
                 Application::$app->controller->setLayout('admin');
-                echo $_SESSION['role'];
+//                echo $_SESSION['role'];
                 if(Application::$app->session->get('role')==='admin'){
-                    echo "Admin login";
+//                    echo "Admin login";
                     Application::$app->controller->setLayout('admin');
                     Application::$app->layout = 'admin';
                     $response->redirect('/dashboard');
                 }
                 else{
-                    var_dump(Application::$app->session->get('role'));
+//                    var_dump(Application::$app->session->get('role'));
                     $response->redirect('/home');
                 }
                 return;

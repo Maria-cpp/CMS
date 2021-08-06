@@ -58,14 +58,6 @@ class LoginForm extends Model
         return Application::$app->login($userdata);
     }
 
-    public function adminlogin($db){
-
-        $userdata = user::findOne(['email'=> $this->email], $db);
-        if(!$this->sessionCredentials($userdata)){
-            return false;
-        }
-        return AdminApp::$app->login($userdata);
-    }
 
 
     public function labels(): array

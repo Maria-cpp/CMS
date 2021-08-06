@@ -8,7 +8,7 @@ use zum\phpmvc\form\TextareaField;
 $this->title = 'Contact'
 
 ?>
-
+<div class="my-contact-form">
     <h1>Contact Us</h1>
 
 <?php $form = \zum\phpmvc\form\Form::begin('', 'post') ?>
@@ -17,3 +17,4 @@ $this->title = 'Contact'
 <?php echo new TextareaField($model, 'body') ?>
     <button type="submit" class="btn btn-primary">Submit</button>
 <?php \zum\phpmvc\form\Form::end(); ?>
+</div>

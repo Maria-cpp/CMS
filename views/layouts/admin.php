@@ -1,91 +1,134 @@
-<?php
-use zum\phpmvc\Application;
-?>
 
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
+    <title>Admin Area | Dashboard </title>
+    <!-- Bootstrap core CSS -->
+    <!--    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" >-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <title><?php echo $this->title ?></title>
+    <link rel="stylesheet" href="../../includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../includes/css/style.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="dashboard"><h4>Dashboard</h4></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/dashboard">dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/posts">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/category">Category</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/tags">Tags</a>
-                </li>
 
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <?php  if(Application::isGuest()):?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/login">Login</a>
-                        </li>
-                    </ul>
-                <?php else: ?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout"><?php echo Application::$app->user->getDisplayName()?>
-                                (Logout)
-                            </a>
-                        </li>
-                    </ul>
-                <?php endif; ?>
-             </div>
-        </div>
+<body>
+<nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="#">Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="adusers">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="adposts">posts</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown02">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item active"><a class="nav-link" href="#">Welcome Admin <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="login">Logout  </a></li>
+        </ul>
     </div>
 </nav>
 
-<div class="container">
-    <?php if(Application::$app->session->getFlash('success')): ?>
-        <div class="alert alert-success" role="alert">
-             <?php echo Application::$app->session->getFlash('success') ?>
+<header id="header">
+    <div class="container">
+        <div class ="row">
+            <div class="col-md-10">
+                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small>Manage Your Site</small></h1>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown create">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Create Content
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" type="button" id="#addUser">Add User</a></li>
+                        <li><a class="dropdown-item" href="#">Add Post</a></li>
+                        <li><a class="dropdown-item" href="#">Add Category</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
-    {{content}}
-</div>
-<!-- Optional JavaScript; choose one of the two! -->
+    </div>
+</header>
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">Dashboard</li>
+        </ol>
+    </div>
+</section>
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
--->
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="dashboard" class="list-group-item list-group-item-action active" aria-current="true">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+                    </a>
+                    <a href="adusers" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span></a>
+                    <a href="adposts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> 20 </span></a>
+                    <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> 5 </span></a>
+                    <a href="tags" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
+                </div>
+                <div class="well">
+                    <h4>Disk Space used </h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                             aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                            70%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{content}}
+        </div>
+    </div>
+</section>
+
+
+<footer id="footer" class="container-fluid">
+    <p> Copyright Admin, &copy; 2021 </p>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="../../includes/js/bootstrap.min.js"></script>
+<script src="../../includes/js/bootstrap.bundle.js"></script>
+<script src="../../includes/js/bootstrap.bundle.js.map"></script>
 </body>
 </html>

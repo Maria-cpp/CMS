@@ -17,10 +17,7 @@ class SiteController extends Controller
         $params = [
             'name' => "TheCodeholic"
         ];
-        if(Application::$app->session->get('role')==='admin'){
-            Application::$app->controller->setLayout('admin');
-            return $this->render('home' , $params);
-        }
+        Application::$app->controller->layout='main';
         return $this->render('home' , $params);
     }
     public function contact(Request $request, Response $response){
@@ -75,41 +72,21 @@ class SiteController extends Controller
         ]);
     }
 
-    public function dashboard(){
-        $params = [
-            'name' => "Admin"
-        ];
-        Application::$app->layout = 'admin';
-        Application::$app->controller->setLayout('dashboard');
-        return $this->render('dashboard' , $params);
-    }
     public function category()
     {
-        if(Application::$app->session->get('role')==='admin'){
-        Application::$app->controller->setLayout('admin');
+//        if(Application::$app->session->get('role')==='admin'){
+        /*Application::$app->controller->setLayout('admin');
         return $this->render('category');
-        }
+        }*/
         return $this->render('category');
     }
     public function tags()
     {
-        if(Application::$app->session->get('role')==='admin'){
-            Application::$app->controller->setLayout('admin');
-            return $this->render('tags');
-        }
+//        if(Application::$app->session->get('role')==='admin'){
+//            Application::$app->controller->setLayout('admin');
+//            return $this->render('tags');
+//        }
         return $this->render('tags');
     }
 
-
-    public function users()
-    {
-        if(Application::$app->session->get('role')==='admin'){
-            Application::$app->controller->setLayout('admin');
-            return $this->render('users');
-        }
-        else{
-            $restrict = new AuthMiddleware();
-            $restrict->execute();
-        }
-    }
 }

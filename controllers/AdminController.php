@@ -6,8 +6,10 @@ use app\models\LoginForm;
 use app\models\Post;
 use app\models\user;
 use zum\phpmvc\AdminApp;
+use zum\phpmvc\Application;
 use zum\phpmvc\Controller;
 use zum\phpmvc\middlewares\AdminMiddleware;
+use zum\phpmvc\middlewares\AuthMiddleware;
 use zum\phpmvc\Request;
 use zum\phpmvc\Response;
 
@@ -19,31 +21,13 @@ class AdminController extends Controller
         $this->registerMiddleware(new AdminMiddleware(['profile']));
     }
 
-    public function home(){
-        $this->setLayout('admin');
-        $params = [
-            'name' => "Admin"
-        ];
-        return $this->renderAdmin('home' , $params);
-    }
     public function dashboard(){
         $params = [
             'name' => "Admin"
         ];
-        return $this->renderAdmin('dashboard' , $params);
-    }
-    public function login(Request $request, Response $response)
-    {
-        $loginFOrm = new LoginForm();
-        if($request->isPost()){
-            $loginFOrm->loadData($request->getBody());
-            if($loginFOrm->validateAdmin() && $loginFOrm->adminlogin(AdminApp::$app->db)){
-                $response->redirect('dashboard');
-                return;
-            }
-        }
-        $this->setLayout('admin');
-        return $this->renderAdmin('login',['model'=>$loginFOrm]);
+        Application::$app->layout = 'admin';
+        Application::$app->controller->setLayout('admin');
+        return $this->render('dashboard' , $params);
     }
 
 
@@ -51,71 +35,48 @@ class AdminController extends Controller
         $post = new Post();
         if($request->isPost()) {
             $post->loadData($request->getBody());
-            if($post->validateAdmin() && $post->send()) {
-                AdminApp::$app->session->setFlash('success', 'Thanks for creating Blog.');
-                return $response->redirectAdmin('/posts');
+            if($post->validate() && $post->send()) {
+                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->render('adposts');
+//                    return $response->redirect('adposts');
+                }
+                return $response->redirect('/_error');
             }
         }
-        return $this->renderAdmin('posts', [
+        return $this->render('adposts', [
             'model' =>$post
         ]);
-    }
-
-
-    public function post(Request $request, Response $response){
-        $post = new Post();
-        if($request->isPost()) {
-            $post->loadData($request->getBody());
-            if($post->validateAdmin() && $post->send()) {
-                AdminApp::$app->session->setFlash('success', 'Thanks for creating Blog.');
-                return $response->redirectAdmin('/post');
-            }
-        }
-        return $this->renderAdmin('posts', [
-            'model' =>$post
-        ]);
-    }
-
-    public function admin(Request $request, Response $response){
-        $admin = new user();
-        if($request->isPost()) {
-            $admin->loadData($request->getBody());
-            if($admin->validate() && $admin->send()) {
-                AdminApp::$app->session->setFlash('success', 'Thanks for creating Blog.');
-                return $response->redirect('/dashboard');
-            }
-            return;
-        }
-        $this->setLayout('admin');
-        return $this->renderAdmin('admin_dashboard', ['model' => $admin]);
-    }
-
-    public function logout(Request $request, Response $response){
-        AdminApp::$app->logout();
-        $response->redirect('/');
     }
 
     public function profile()
     {
         $this->setLayout('admin');
-        return $this->renderAdmin('profile');
+        return $this->render('profile');
     }
 
-    public function user()
+    public function users()
     {
-        $this->setLayout('admin');
-        return $this->renderAdmin('users');
+        if(Application::$app->session->get('role')==='admin'){
+            Application::$app->controller->setLayout('admin');
+            return $this->render('adusers');
+        }
+        else{
+            $restrict = new AuthMiddleware();
+            $restrict->execute();
+        }
     }
 
     public function category()
     {
         $this->setLayout('admin');
-        return $this->renderAdmin('category');
+        return $this->render('category');
     }
 
     public function tags()
     {
         $this->setLayout('admin');
-        return $this->renderAdmin('tags');
+        return $this->render('tags');
     }
 }
