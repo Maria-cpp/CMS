@@ -2,15 +2,28 @@
 
 /** @var $this \zum\phpmvc\View */
 
-$this->title = 'Posts'
+use app\models\Post;
+use zum\phpmvc\Application;
+$category = new Category();
 
+$this->title = 'Posts';
+$post = new Post();
+$posts = $post->fetchAll(Application::$app->db);
 ?>
 
 <div class="col-md-9">
     <!--website OverView-->
     <div class="panel">
         <div class="panel-heading main-color-bg">
-            <h3 class="panel-title">Posts</h3>
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="panel-title">Posts </h3>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
+                    <a href="posts" class="btn">Add New</a></button>
+                </div>
+            </div>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -34,42 +47,20 @@ $this->title = 'Posts'
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>Entertainment</td>
-                                    <td>:)</td>
-                                    <td>Entertainment</td>
-                                    <td>Entertainment</td>
-                                    <td>Aug 6, 2021</td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
-                                </tr>
-                                <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>Entertainment</td>
-                                    <td>:)</td>
-                                    <td>Entertainment</td>
-                                    <td>Entertainment</td>
-                                    <td>Aug 6, 2021</td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
-                                </tr>
-                                <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>Entertainment</td>
-                                    <td>:)</td>
-                                    <td>Entertainment</td>
-                                    <td>Entertainment</td>
-                                    <td>Aug 6, 2021</td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
-                                </tr>
+                                <?php foreach ($posts as $post){ ?>
+                                   <tr>
+                                       <td><?php echo $post['id'];?></td>
+                                       <td><?php echo $post['author']; ?></td>
+                                       <td><?php echo $post['title'];?></td>
+                                       <td>:)</td>
+                                       <td><?php echo $post['category_id'];?></td>
+                                       <td><?php echo $post['tag'];?></td>
+                                       <td><?php echo date('l jS' , $post['created_at']) ?></td>
+                                       <td><a href="post" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                                       <td><a href="post.php?id=<?php echo $post['id'];?>" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                       <td><a onClick=\"javascript: return confirm('Are you sure you want to delete this post?')\" href='?del=<?php $post['id'];?>'><i class='fa fa-times' style='color: red;'></i><span class="glyphicon glyphicon-trash"></span></a></td>
+                                   </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </form>

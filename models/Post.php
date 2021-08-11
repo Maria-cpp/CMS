@@ -4,14 +4,14 @@
 namespace app\models;
 
 
-use JetBrains\PhpStorm\ArrayShape;
-use zum\phpmvc\Model;
+use zum\phpmvc\Application;
+use zum\phpmvc\db\DbModel;
 
-class Post extends Model
+class Post extends DbModel
 {
     public string $title = '';
-    public string $description = '';
-    public string $time_date = '';
+    public string $content = '';
+    public string $created_at = '';
 
     public function rules(): array
     {
@@ -20,6 +20,17 @@ class Post extends Model
             'description' =>[self::RULE_REQUIRED],
         ];
     }
+
+    public function Post($db): bool
+    {
+
+        $userdata = Post::findOne(['id'=> $this->id], $db);
+        if(!$this->sessionCredentials($userdata)){
+            return false;
+        }
+        return Application::$app->login($userdata);
+    }
+
 
     public function labels(): array
     {
@@ -33,5 +44,21 @@ class Post extends Model
     public function send(): bool
     {
         return true;
+    }
+
+
+    public function tableName(): string
+    {
+        return 'posts';
+    }
+
+    public function attributes(): array
+    {
+        return ['id', 'author', 'title', 'content', 'image', 'category_id', 'tag'];
+    }
+
+    public function primaryKey(): string
+    {
+        return 'id';
     }
 }

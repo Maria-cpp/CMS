@@ -2,8 +2,11 @@
 
 /** @var $this \zum\phpmvc\View */
 
-$this->title = 'Posts'
+use app\models\user;
+use zum\phpmvc\Application;
 
+$user = new user();
+$users = $user->fetchAll(Application::$app->db);
 ?>
 
 <div class="col-md-9">
@@ -23,40 +26,23 @@ $this->title = 'Posts'
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>View Post</th>
+                                    <th>View</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($users as $user){ ?>
                                 <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>marianaseem99@gmail.com</td>
-                                    <td>Role</td>
+                                    <td><?php echo $user['id'];?></td>
+                                    <td><?php echo $user['username'];?></td>
+                                    <td><?php echo $user['email'];?></td>
+                                    <td><?php echo $user['role'];?></td>
                                     <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                                     <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                    <td><a href="delete" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
                                 </tr>
-                                <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>marianaseem99@gmail.com</td>
-                                    <td>Role</td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
-                                </tr>
-                                <tr>
-                                    <td>131</td>
-                                    <td>Maria</td>
-                                    <td>marianaseem99@gmail.com</td>
-                                    <td>Role</td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
-                                </tr>
-
+                                <?php }?>
                                 </tbody>
                             </table>
                         </form>

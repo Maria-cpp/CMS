@@ -74,19 +74,10 @@ class SiteController extends Controller
 
     public function category()
     {
-//        if(Application::$app->session->get('role')==='admin'){
-        /*Application::$app->controller->setLayout('admin');
-        return $this->render('category');
-        }*/
         return $this->render('category');
     }
     public function tags()
     {
-//        if(Application::$app->session->get('role')==='admin'){
-//            Application::$app->controller->setLayout('admin');
-//            return $this->render('tags');
-//        }
         return $this->render('tags');
     }
-
 }

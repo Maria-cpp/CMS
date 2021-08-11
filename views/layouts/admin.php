@@ -42,17 +42,19 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
+            <li class="dropdown">
+               <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown02">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
+
             </li>
         </ul>
         <ul class="navbar-nav navbar-right">
             <li class="nav-item active"><a class="nav-link" href="#">Welcome Admin <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Go to Website </a></li>
             <li class="nav-item"><a class="nav-link" href="login">Logout  </a></li>
         </ul>
     </div>

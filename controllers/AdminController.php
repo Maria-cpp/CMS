@@ -31,7 +31,7 @@ class AdminController extends Controller
     }
 
 
-    public function posts(Request $request, Response $response){
+    public function addposts(Request $request, Response $response){
         $post = new Post();
         if($request->isPost()) {
             $post->loadData($request->getBody());
@@ -40,7 +40,6 @@ class AdminController extends Controller
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
                     return $this->render('adposts');
-//                    return $response->redirect('adposts');
                 }
                 return $response->redirect('/_error');
             }

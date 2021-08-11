@@ -32,6 +32,9 @@ $app->router->post('/contact', [SiteController::class, 'contact']);
 $app->router->get('/posts' ,[SiteController::class, 'posts']);
 $app->router->post('/posts', [SiteController::class, 'posts']);
 
+$app->router->get('/post' ,[SiteController::class, 'post']);
+$app->router->post('/post', [SiteController::class, 'post']);
+
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);
 
@@ -44,8 +47,8 @@ $app->router->get('/logout', [AuthController::class, 'logout']);
 $app->router->get('/dashboard' , [AdminController::class, 'dashboard']);
 $app->router->post('/dashboard' , [AdminController::class, 'dashboard']);
 
-$app->router->get('/adposts' , [AdminController::class, 'posts']);
-$app->router->post('/adposts' , [AdminController::class, 'posts']);
+$app->router->get('/adposts' , [AdminController::class, 'addposts']);
+$app->router->post('/adposts' , [AdminController::class, 'addposts']);
 
 $app->router->get('/category' , [AdminController::class, 'category']);
 $app->router->post('/category' , [AdminController::class, 'category']);
