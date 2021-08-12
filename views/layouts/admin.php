@@ -1,5 +1,17 @@
-
 <!doctype html>
+
+<?php
+
+use app\models\Post;
+use app\models\Category;
+use app\models\user;
+
+$post = new Post();
+$category = new Category();
+$user = new user();
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -53,7 +65,7 @@
             </li>
         </ul>
         <ul class="navbar-nav navbar-right">
-            <li class="nav-item active"><a class="nav-link" href="#">Welcome Admin <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"><a class="nav-link" href="#">Welcome <?php echo $_SESSION['username']?> <span class="sr-only">(current)</span></a></li>
             <li class="nav-item"><a class="nav-link" href="/">Go to Website </a></li>
             <li class="nav-item"><a class="nav-link" href="login">Logout  </a></li>
         </ul>
@@ -99,9 +111,9 @@
                     <a href="dashboard" class="list-group-item list-group-item-action active" aria-current="true">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="adusers" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span></a>
-                    <a href="adposts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> 20 </span></a>
-                    <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> 5 </span></a>
+                    <a href="adusers" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $user->count() ?></span></a>
+                    <a href="adposts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> <?php echo $post->count() ?> </span></a>
+                    <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> <?php echo $category->count() ?> </span></a>
                     <a href="tags" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
                 </div>
                 <div class="well">

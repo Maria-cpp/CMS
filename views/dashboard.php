@@ -2,7 +2,15 @@
 
 /** @var $this \zum\phpmvc\View */
 
-$this->title = 'Dashboard'
+$this->title = 'Dashboard';
+
+use app\models\Post;
+use app\models\Category;
+use app\models\user;
+
+$post = new Post();
+$category = new Category();
+$user = new user();
 
 ?>
 <div class="col-md-9">
@@ -15,19 +23,19 @@ $this->title = 'Dashboard'
             <div class="row">
                 <div class="col-md-3">
                     <div class="well dash-box">
-                        <h2> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 12 </h2>
+                        <h2> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $user->count() ?></h2>
                         <h4>Users</h4>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="well dash-box">
-                        <h2> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 20 </h2>
+                        <h2> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo $post->count() ?> </h2>
                         <h4> Posts </h4>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="well dash-box">
-                        <h2> <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 5 </h2>
+                        <h2> <span class="glyphicon glyphicon-list" aria-hidden="true"></span> <?php echo $category->count() ?> </h2>
                         <h4> Category </h4>
                     </div>
                 </div>

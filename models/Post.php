@@ -9,6 +9,7 @@ use zum\phpmvc\db\DbModel;
 
 class Post extends DbModel
 {
+    public int $id;
     public string $title = '';
     public string $content = '';
     public string $created_at = '';

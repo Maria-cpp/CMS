@@ -1,0 +1,15 @@
+{
+    "name": "zum/php-mvc-core",
+    "authors": [
+        {
+            "name": "Maria-cpp",
+            "email": "maria.naseem@mediapark.pk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "zum\\phpmvc\\": "./"
+        }
+    },
+    "require": {}
+}

@@ -37,4 +37,9 @@ class Category extends DbModel
         return 'id';
     }
 
+    public function getCategoryName(string $id){
+        $data = $this->findOne(['id' => $id], Application::$app->db);
+        echo $data->category_name;
+        return $data->category_name;
+    }
 }

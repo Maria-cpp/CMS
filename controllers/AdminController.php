@@ -69,13 +69,13 @@ class AdminController extends Controller
 
     public function category()
     {
-        $this->setLayout('admin');
+        Application::$app->controller->setLayout('admin');
         return $this->render('category');
     }
 
     public function tags()
     {
-        $this->setLayout('admin');
+        Application::$app->controller->setLayout('admin');
         return $this->render('tags');
     }
 }
