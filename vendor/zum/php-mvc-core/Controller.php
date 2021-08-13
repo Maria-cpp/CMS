@@ -29,7 +29,7 @@ class Controller
 
     public function renderAdmin($view, $params = [])
     {
-        return AdminApp::$app->view->renderView($view, $params);
+        return Application::$app->view->renderAdmin($view, $params);
     }
 
     public function registerMiddleware(BaseMiddleware $middleware){

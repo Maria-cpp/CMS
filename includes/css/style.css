@@ -147,6 +147,11 @@ body{
     color: #333333;
 }
 
+.table {
+    width: auto;
+    height: 100px;
+    font-max-size: small;
+}
 
 .panel{
     margin-left: 5px;
@@ -181,6 +186,31 @@ body{
     text-align: center;
     border-color: #000000;
     background-color:#f0e6f7;
+}
+
+.post{
+    text-align: justify;
+    width: 800px;
+    margin-left: 80px;
+}
+
+.title{
+    height : auto;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #9ca3aa;
+    color: #ffffff;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.content{
+    color : #2a1748;
+}
+
+textarea{
+    column-span: 50;
+    row-span: 50;
 }
 
 @media (max-width: 575px) {

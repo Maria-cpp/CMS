@@ -27,11 +27,11 @@ class AdminController extends Controller
         ];
         Application::$app->layout = 'admin';
         Application::$app->controller->setLayout('admin');
-        return $this->render('dashboard' , $params);
+        return $this->renderAdmin('admin/dashboard' , $params);
     }
 
 
-    public function addposts(Request $request, Response $response){
+    public function posts(Request $request, Response $response){
         $post = new Post();
         if($request->isPost()) {
             $post->loadData($request->getBody());
@@ -39,12 +39,47 @@ class AdminController extends Controller
                 Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
-                    return $this->render('adposts');
+                    return $this->renderAdmin('admin/posts');
                 }
                 return $response->redirect('/_error');
             }
         }
-        return $this->render('adposts', [
+        return $this->renderAdmin('admin/posts', [
+            'model' =>$post
+        ]);
+    }
+
+
+    public function post(Request $request, Response $response){
+        $post = new Post();
+        if($request->isPost()) {
+            $post->loadData($request->getBody());
+            if($post->validate() && $post->send()) {
+                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->renderAdmin('admin/post');
+                }
+                return $response->redirect('/_error');
+            }
+        }
+        return $this->renderAdmin('admin/post', [
+            'model' =>$post
+        ]);
+    }
+
+    public function edit(Request $request, Response $response){
+        $post = new Post();
+        if($request->isPost()) {
+            $post->loadData($request->getBody());
+                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->renderAdmin('admin/post');
+                }
+                return $response->redirect('/_error');
+        }
+        return $this->renderAdmin('admin/editpost', [
             'model' =>$post
         ]);
     }
@@ -59,7 +94,7 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->render('adusers');
+            return $this->renderAdmin('admin/adusers');
         }
         else{
             $restrict = new AuthMiddleware();
@@ -70,7 +105,7 @@ class AdminController extends Controller
     public function category()
     {
         Application::$app->controller->setLayout('admin');
-        return $this->render('category');
+        return $this->renderAdmin('admin/category');
     }
 
     public function tags()

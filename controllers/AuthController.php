@@ -29,8 +29,7 @@ class AuthController extends Controller
                 Application::$app->controller->setLayout('admin');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
-                    Application::$app->layout = 'admin';
-                    $response->redirect('/dashboard');
+                    $response->redirect('/admin/dashboard');
                 }
                 else{
                     $response->redirect('/home');
@@ -61,7 +60,7 @@ class AuthController extends Controller
 
     public function logout(Request $request, Response $response){
         Application::$app->logout();
-        $response->redirect('/');
+        $response->redirect('/login');
     }
 
     public function profile(){

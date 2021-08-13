@@ -44,11 +44,17 @@ $app->router->post('/register', [AuthController::class, 'register']);
 $app->router->get('/profile', [AuthController::class, 'profile']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
 
-$app->router->get('/dashboard' , [AdminController::class, 'dashboard']);
-$app->router->post('/dashboard' , [AdminController::class, 'dashboard']);
+$app->router->get('/admin/dashboard' , [AdminController::class, 'dashboard']);
+$app->router->post('/admin/dashboard' , [AdminController::class, 'dashboard']);
 
-$app->router->get('/adposts' , [AdminController::class, 'addposts']);
-$app->router->post('/adposts' , [AdminController::class, 'addposts']);
+$app->router->get('/admin/posts' , [AdminController::class, 'posts']);
+$app->router->post('/admin/posts' , [AdminController::class, 'posts']);
+
+$app->router->get('/admin/post' , [AdminController::class, 'post']);
+$app->router->post('/admin/post' , [AdminController::class, 'post']);
+
+$app->router->get('/admin/editpost' , [AdminController::class, 'edit']);
+$app->router->post('/admin/editpost' , [AdminController::class, 'edit']);
 
 $app->router->get('/category' , [AdminController::class, 'category']);
 $app->router->post('/category' , [AdminController::class, 'category']);
@@ -56,11 +62,11 @@ $app->router->post('/category' , [AdminController::class, 'category']);
 $app->router->get('/tags' , [AdminController::class, 'tags']);
 $app->router->post('/tags' , [AdminController::class, 'tags']);
 
-$app->router->get('/adusers' , [AdminController::class, 'users']);
-$app->router->post('/adusers' , [AdminController::class, 'users']);
+$app->router->get('/admin/adusers' , [AdminController::class, 'users']);
+$app->router->post('/admin/adusers' , [AdminController::class, 'users']);
 
-$app->router->get('/category' , [SiteController::class, 'category']);
-$app->router->post('/category' , [SiteController::class, 'category']);
+$app->router->get('/admin/category' , [AdminController::class, 'category']);
+$app->router->post('/admin/category' , [AdminController::class, 'category']);
 
 $app->router->get('/tags' , [SiteController::class, 'tags']);
 $app->router->post('/tags' , [SiteController::class, 'tags']);

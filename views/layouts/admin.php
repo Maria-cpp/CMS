@@ -44,7 +44,7 @@ $user = new user();
                 <a class="nav-link" href="adusers">Users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="adposts">posts</a>
+                <a class="nav-link" href="posts">posts</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
@@ -112,9 +112,9 @@ $user = new user();
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <a href="adusers" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $user->count() ?></span></a>
-                    <a href="adposts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> <?php echo $post->count() ?> </span></a>
+                    <a href="posts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> <?php echo $post->count() ?> </span></a>
                     <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> <?php echo $category->count() ?> </span></a>
-                    <a href="tags" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
+                    <a href="#" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
                 </div>
                 <div class="well">
                     <h4>Disk Space used </h4>
@@ -140,6 +140,7 @@ $user = new user();
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="../../includes/js/cms.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="../../includes/js/bootstrap.min.js"></script>
 <script src="../../includes/js/bootstrap.bundle.js"></script>

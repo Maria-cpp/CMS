@@ -63,7 +63,12 @@ use zum\phpmvc\Application;
         <?php else: ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <?php if($_SESSION['role']==='admin') { ?>
+                    <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+                    <?php }else {?>
                     <a class="nav-link" href="/profile">Profile</a>
+                    <?php } ?>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Welcome <?php echo $_SESSION['username']?>

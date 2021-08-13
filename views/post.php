@@ -1,9 +1,9 @@
 <?php
-
+/** @var $model \app\models\post */
 /** @var $this \zum\phpmvc\View */
-
-$this->title = 'Post'
+$this->title = 'post'
 
 ?>
 
-<h1>Post</h1>
+<h1>Home Post</h1>
+

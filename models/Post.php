@@ -11,8 +11,9 @@ class Post extends DbModel
 {
     public int $id;
     public string $title = '';
+    public string $author = '';
     public string $content = '';
-    public string $created_at = '';
+    public string $category = '';
 
     public function rules(): array
     {
@@ -56,6 +57,14 @@ class Post extends DbModel
     public function attributes(): array
     {
         return ['id', 'author', 'title', 'content', 'image', 'category_id', 'tag'];
+    }
+
+    public function setAttributres(int $id, string $author, string $title, string $content)
+    {
+       $this->id = $id;
+       $this->author = $author;
+       $this->title=$title;
+       $this->content=$content;
     }
 
     public function primaryKey(): string
