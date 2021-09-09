@@ -45,25 +45,24 @@ if($_SESSION['role']==='admin') {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
+                        <?php foreach ($posts as $post){ echo "<br>"; ?>
                         <table class="table table-striped table-hover" id="poststable">
                             <tbody>
-                            <?php foreach ($posts as $post){ ?>
                                 <tr><td colspan="3" style="font-size: large; text-align: center"><?php echo $post['title'];?></td></tr>
                                 <tr><td colspan="3" style="font-size: larger; text-align:justify-all"><?php echo $post['content'];?></td></tr>
                                 <tr>
                                     <td style="width: 200px; text-align: center">Author : <?php echo $post['author']; ?></td>
                                     <td style="width: 200px; text-align: center">Published On :  <?php echo date('l, jS' , $post['created_at']) ?></td>
-                                    <td style="width: 200px; text-align: center">
+                                    <td style="width: 200px; text-align: center; font-size: larger">
                                         <a href="post?id=<?php echo $post['id']; ?>" class="mr-3" title="view" data-toggle="tooltip">
                                          <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr><td colspan="3"><?php  echo "<br>"; ?></td></tr>
-
-                            <?php } ?>
                             </tbody>
                         </table>
+
+                        <?php echo "<br>"; } ?>
                     </div>
                 </div>
             </div>
