@@ -17,7 +17,6 @@ $users = $user->fetchAll(Application::$app->db);
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-7">
                         <form action="" method="post">
                             <table class="table table-striped table-hover">
                                 <thead>
@@ -47,7 +46,7 @@ $users = $user->fetchAll(Application::$app->db);
                             </table>
                         </form>
 <!--                    </div>-->
-                </div>
+<!--                </div>-->
             </div>
         </div>
     </div>

@@ -56,8 +56,8 @@ $app->router->post('/admin/post' , [AdminController::class, 'post']);
 $app->router->get('/admin/editpost' , [AdminController::class, 'edit']);
 $app->router->post('/admin/editpost' , [AdminController::class, 'edit']);
 
-$app->router->get('/category' , [AdminController::class, 'category']);
-$app->router->post('/category' , [AdminController::class, 'category']);
+$app->router->get('/category' , [SiteController::class, 'category']);
+$app->router->post('/category' , [SiteController::class, 'category']);
 
 $app->router->get('/tags' , [AdminController::class, 'tags']);
 $app->router->post('/tags' , [AdminController::class, 'tags']);

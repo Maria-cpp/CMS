@@ -147,9 +147,17 @@ body{
     color: #333333;
 }
 
+.main-container{
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: 120px;
+    justify-content: center;
+}
+
+
 .table {
-    width: auto;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     font-max-size: small;
 }
 

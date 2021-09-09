@@ -27,8 +27,6 @@ if (isset($_GET['id'])) {
                     <h3 class="panel-title">Posts </h3>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
-                        <a href="editpost?id=<?php echo $posts['id']?>" class="btn">Edit</a></button>
                 </div>
             </div>
         </div>

@@ -14,7 +14,6 @@ $this->title = 'post';
 
 $post = new Post();
 if(isset($_POST['title'], $_POST['content'])) {
-    echo "in post if";
     $title = $_POST['title'];
     $id = $_POST['id'];
     $cid = $_POST['cid'];

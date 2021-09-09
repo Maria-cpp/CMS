@@ -19,7 +19,7 @@ use zum\phpmvc\Application;
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand" href="#">CMS</a>
+    <a class="navbar-brand" href="/">CMS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,7 +29,7 @@ use zum\phpmvc\Application;
                 <a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="posts">Posts</a>
+                <a class="nav-link" href="/posts">Posts</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="category" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
@@ -79,7 +79,7 @@ use zum\phpmvc\Application;
         <?php endif; ?>
     </div>
 </nav>
-<div class="container">
+<div class="main-container">
     <?php if(Application::$app->session->getFlash('success')): ?>
         <div class="alert alert-success" role="alert">
              <?php echo Application::$app->session->getFlash('success') ?>
