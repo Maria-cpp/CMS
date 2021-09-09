@@ -34,11 +34,7 @@ if (isset($_GET['id'])) {
         <div class="panel-heading main-color-bg">
             <div class="row">
                 <div class="col-md-10">
-                    <h3 class="panel-title">Posts </h3>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
-                        <a href="editpost?id=<?php echo $posts['id']?>" class="btn">Edit</a></button>
+                    <h3 class="panel-title">Post </h3>
                 </div>
             </div>
         </div>
