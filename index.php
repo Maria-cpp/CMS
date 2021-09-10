@@ -62,8 +62,11 @@ $app->router->post('/category' , [SiteController::class, 'category']);
 $app->router->get('/tags' , [AdminController::class, 'tags']);
 $app->router->post('/tags' , [AdminController::class, 'tags']);
 
-$app->router->get('/admin/adusers' , [AdminController::class, 'users']);
-$app->router->post('/admin/adusers' , [AdminController::class, 'users']);
+$app->router->get('/admin/users' , [AdminController::class, 'users']);
+$app->router->post('/admin/users' , [AdminController::class, 'users']);
+
+$app->router->get('/admin/user' , [AdminController::class, 'user']);
+$app->router->post('/admin/user' , [AdminController::class, 'user']);
 
 $app->router->get('/admin/category' , [AdminController::class, 'category']);
 $app->router->post('/admin/category' , [AdminController::class, 'category']);

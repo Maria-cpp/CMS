@@ -36,6 +36,7 @@ abstract class DbModel extends Model
     {
         $tableName = static::tableName();
         $attributes = array_keys($where);
+
         $sql = implode("AND ", array_map(fn($attr, $value) => "$attr = '$value'", $attributes, $where));
         $statement = $db->pdo->prepare("SELECT * FROM $tableName WHERE $sql");
 

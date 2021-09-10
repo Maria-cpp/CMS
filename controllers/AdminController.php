@@ -71,14 +71,21 @@ class AdminController extends Controller
     public function edit(Request $request, Response $response){
         $post = new Post();
         if($request->isPost()) {
+            echo "<br> in edit func <br>";
             $post->loadData($request->getBody());
-                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
+                Application::$app->session->setFlash('success', 'Data Updated.');
                 if(Application::$app->session->get('role')==='admin'){
+                    echo "in edit func 2 <br>";
+
                     Application::$app->controller->setLayout('admin');
-                    return $this->renderAdmin('admin/post');
+                    return $this->renderAdmin('admin/editpost');
                 }
-                return $response->redirect('/_error');
+            echo "in edit func error <br>";
+
+            return $response->redirect('/_error');
         }
+        echo "in edit func is get mode<br>";
+
         return $this->renderAdmin('admin/editpost', [
             'model' =>$post
         ]);
@@ -94,7 +101,19 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/adusers');
+            return $this->renderAdmin('admin/users');
+        }
+        else{
+            $restrict = new AuthMiddleware();
+            $restrict->execute();
+        }
+    }
+
+    public function user()
+    {
+        if(Application::$app->session->get('role')==='admin'){
+            Application::$app->controller->setLayout('admin');
+            return $this->renderAdmin('admin/user');
         }
         else{
             $restrict = new AuthMiddleware();

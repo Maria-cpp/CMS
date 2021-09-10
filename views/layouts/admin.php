@@ -41,7 +41,7 @@ $user = new user();
                 <a class="nav-link" href="dashboard">Dashboard <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="adusers">Users</a>
+                <a class="nav-link" href="users">Users</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="posts">posts</a>
@@ -111,7 +111,7 @@ $user = new user();
                     <a href="dashboard" class="list-group-item list-group-item-action active" aria-current="true">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="adusers" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $user->count() ?></span></a>
+                    <a href="users" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $user->count() ?></span></a>
                     <a href="posts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> <?php echo $post->count() ?> </span></a>
                     <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> <?php echo $category->count() ?> </span></a>
                     <a href="#" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>

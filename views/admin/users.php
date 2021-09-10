@@ -37,8 +37,8 @@ $users = $user->fetchAll(Application::$app->db);
                                     <td><?php echo $user['username'];?></td>
                                     <td><?php echo $user['email'];?></td>
                                     <td><?php echo $user['role'];?></td>
-                                    <td><a href="#" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                                    <td><a href="#" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><a href="user?uid=<?php echo $user['id'] ?>" class="mr-3" title="View Record" data-toggle="tooltip"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                                    <td><a href="edituser?uid=<?php echo $user['id'] ?>" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                     <td><a href="delete" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
                                 </tr>
                                 <?php }?>
