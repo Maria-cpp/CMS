@@ -3,17 +3,15 @@
 /** @var $this \zum\phpmvc\View */
 
 use app\models\Category;
-use app\models\Post;
+use app\models\user;
 use zum\phpmvc\Application;
 
 $category = new Category();
 $categories = $category->fetchAll(Application::$app->db);
 
-$this->title = 'post';
+$this->title = 'user';
 
-$post = new Post();
-$title = $content  = $cid = $id = "";
-
+$user = new user();
 function test_input($data): string
 {
     $data = trim($data);
@@ -35,7 +33,7 @@ if (isset($_POST["id"])) {
         echo "In query if<br>";
 
         global $pdo;
-        $query = $pdo->prepare('UPDATE posts SET title= ?, content=?, updated_at=?, category_id = ?, WHERE id = ?');
+        $query = $pdo->prepare('UPDATE users SET username= ?, email=?, role=?, WHERE id = ?');
         $query->bindValue(1, $title);
         $query->bindValue(2, $content);
         $query->bindValue(3, time());
@@ -45,13 +43,13 @@ if (isset($_POST["id"])) {
         $query->execute();
         echo "query executed<br>";
 
-        Application::$app->controller->renderAdmin(('admin/post'));
+        Application::$app->controller->renderAdmin(('admin/user'));
     }
 }
-else if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $posts = $post->findOne(['id'=>$id], Application::$app->db);
-    $posts =json_decode(json_encode($posts, true),true);
+else if (isset($_GET['uid'])) {
+    $id = $_GET['uid'];
+    $users = $user->findOne(['id'=>$id], Application::$app->db);
+    $posts =json_decode(json_encode($users, true),true);
 }
 else{
     Application::$app->controller->renderAdmin('admin/_error');
@@ -65,7 +63,7 @@ else{
         <div class="panel-heading main-color-bg">
             <div class="row">
                 <div class="col-md-10">
-                    <h3 class="panel-title"><?php echo $posts['title']?></h3>
+                    <h3 class="panel-title"><?php echo $users['username']?></h3>
                 </div>
             </div>
         </div>
@@ -77,25 +75,22 @@ else{
                         <div >
                             <input type="button" hidden="hidden" name="id" value="<?php echo $id;?>"/>
                         </div>
-                        <div class="title">
-                            <input type="text" name="title" value="<?php echo $posts['title'];?>"/>
+                        <div>
+                            <input type="text" name="id" value="<?php echo $users['id'];?>"/>
                         </div>
-                        <div class="col">
-                            <select name="cid">
-                                <?php foreach($categories as $category) {?>
-                                    <option value="<?php echo $category['id']?>">
-                                        <?php echo $category['category_name'];?>
-                                    </option>
-                                <?php }?>
-                            </select><br/><br/>
+                        <div>
+                            <input type="text" name="email" value="<?php echo $users['email'];?>"/>
                         </div>
-                        <div class="textarea">
-                            <textarea rows="20", cols=100, name="content"> <?php echo $posts['content'];?></textarea><br /><br />
+                        <div>
+                            <input type="text" name="username" value="<?php echo $users['username'];?>"/>
+                        </div>
+                        <div>
+                            <input type="text" name="role" value="<?php echo $users['role'];?>"/>
                         </div>
                     </div>
                         <input type="submit" name="submit" value="Update">
                     </form>
-                    <a href="posts">&larr; Back</a>
+                    <a href="users">&larr; Back</a>
                 </div>
             </div>
         </div>

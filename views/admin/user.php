@@ -32,7 +32,7 @@ if (isset($_GET['uid'])) {
                     <h3 class="panel-title">User Details </h3>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
+                    <button class="btn btn-secondary" type="button" id="adduser" aria-expanded="false">
                         <a href="edituser?id=<?php echo $users['id']?>" class="btn">Edit</a></button>
                 </div>
             </div>
@@ -40,14 +40,12 @@ if (isset($_GET['uid'])) {
         <div class="panel-body">
             <div class="row">
                <div>
-                   <div><h2>ID :
-                           <?php echo $users['id']?>
-                           <div>
-                               Email : <?php echo $users['email'] ?>
-                           </div>
+                   <div><h2 style="color: #472778"> Name:
+                           <?php echo $users['username']?>
                        </h2>
                    </div>
-                   <p style="color: #472778">User Name : <?php echo $users['username']?></p>
+                   <p style="color: #472778">ID : <?php echo $users['id']?></p>
+                   <p style="color: #472778">Email : <?php echo $users['email']?></p>
 
                    <div class="row">
                        <div class="post">
