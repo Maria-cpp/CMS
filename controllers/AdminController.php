@@ -97,6 +97,18 @@ class AdminController extends Controller
         return $this->render('profile');
     }
 
+    public function delete()
+    {
+        if(Application::$app->session->get('role')==='admin'){
+            Application::$app->controller->setLayout('admin');
+            return $this->renderAdmin('admin/delete');
+        }
+        else{
+            $restrict = new AuthMiddleware();
+            $restrict->execute();
+        }
+    }
+
     public function users()
     {
         if(Application::$app->session->get('role')==='admin'){

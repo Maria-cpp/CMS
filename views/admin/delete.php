@@ -14,7 +14,7 @@ else if(isset($_GET['uid'])){
     $id = $_GET['uid'];
     $user = new user();
     if($user->deleteOne(['id'=>$id], Application::$app->db)){
-        Application::$app->controller->render('users');
+        header("location: users");
     }
 }// get id through query string
 else

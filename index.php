@@ -56,6 +56,9 @@ $app->router->post('/admin/post' , [AdminController::class, 'post']);
 $app->router->get('/admin/editpost' , [AdminController::class, 'edit']);
 $app->router->post('/admin/editpost' , [AdminController::class, 'edit']);
 
+$app->router->get('/admin/delete' , [AdminController::class, 'delete']);
+
+
 $app->router->get('/category' , [SiteController::class, 'category']);
 $app->router->post('/category' , [SiteController::class, 'category']);
 

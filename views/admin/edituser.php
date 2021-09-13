@@ -12,38 +12,29 @@ $categories = $category->fetchAll(Application::$app->db);
 $this->title = 'user';
 
 $user = new user();
-function test_input($data): string
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 
-if (isset($_POST["id"])) {
-    echo "In post method<br>";
-    $title = test_input($_POST["title"]);
-    $content = test_input(nl2br($_POST["content"]));
-    $cid = test_input($_POST["cid"]);
-    $id = test_input($_POST["id"]);
-    if (empty($title) or empty($content)) {
+if (isset($_POST["uid"])) {
+    $id = $_POST["uid"];
+    $firstname = $_POST["firstname"];
+    $lastname =nl2br($_POST["lastename"]);
+    $email = $_POST["email"];
+    $role = $_POST["role"];
+    if (empty($firstname) or empty($lastname) or empty($email) or empty($role)) {
         $error = 'All fields are required!';
     }
     else{
-        echo "In query if<br>";
-
         global $pdo;
-        $query = $pdo->prepare('UPDATE users SET username= ?, email=?, role=?, WHERE id = ?');
-        $query->bindValue(1, $title);
-        $query->bindValue(2, $content);
-        $query->bindValue(3, time());
-        $query->bindValue(4, $cid);
-        $query->bindValue(5, $id);
+        $query = $pdo->prepare('UPDATE users SET username= ?, firstname=?, lastname=?, email=?, role=?, WHERE id = ?');
+        $username = $firstname." ".$lastname;
+        $query->bindValue(1, $username);
+        $query->bindValue(2, $firstname);
+        $query->bindValue(3, $lastname);
+        $query->bindValue(4, $email);
+        $query->bindValue(6, $role);
+        $query->bindValue(7, $id);
 
         $query->execute();
-        echo "query executed<br>";
-
-        Application::$app->controller->renderAdmin(('admin/user'));
+    header("location: users");
     }
 }
 else if (isset($_GET['uid'])) {
@@ -70,6 +61,7 @@ else{
         <div class="panel-body">
             <div class="row">
                 <div class="post">
+
                     <form action="" method="POST">
                     <div class="row">
                         <div >

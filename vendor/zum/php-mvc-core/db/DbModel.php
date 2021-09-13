@@ -65,7 +65,7 @@ abstract class DbModel extends Model
         foreach ($where as $key => $item) {
             $statement->bindValue(":key", $item);
         }
-        $statement->execute();
+        return $statement->execute();
     }
 
     public function count(){
