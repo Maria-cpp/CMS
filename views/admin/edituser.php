@@ -13,30 +13,6 @@ $this->title = 'user';
 
 $user = new user();
 
-//if (isset($_POST["uid"])) {
-//    $id = $_POST["uid"];
-//    $firstname = $_POST["firstname"];
-//    $lastname =nl2br($_POST["lastename"]);
-//    $email = $_POST["email"];
-//    $role = $_POST["role"];
-//    if (empty($firstname) or empty($lastname) or empty($email) or empty($role)) {
-//        $error = 'All fields are required!';
-//    }
-//    else{
-//        global $pdo;
-//        $query = $pdo->prepare('UPDATE users SET username= ?, firstname=?, lastname=?, email=?, role=?, WHERE id = ?');
-//        $username = $firstname." ".$lastname;
-//        $query->bindValue(1, $username);
-//        $query->bindValue(2, $firstname);
-//        $query->bindValue(3, $lastname);
-//        $query->bindValue(4, $email);
-//        $query->bindValue(6, $role);
-//        $query->bindValue(7, $id);
-//
-//        $query->execute();
-//    header("location: users");
-//    }
-//}
 if (isset($_GET['uid'])) {
     $id = $_GET['uid'];
     $users = $user->findOne(['id'=>$id], Application::$app->db);

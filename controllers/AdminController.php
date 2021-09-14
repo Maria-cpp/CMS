@@ -90,7 +90,6 @@ class AdminController extends Controller
         $user = new user();
         if($request->isPost()) {
             $user->loadData($request->getBody());
-//            Application::$app->session->setFlash('success', 'Data Updated.');
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
                 return $this->renderAdmin('admin/edituser');
@@ -98,6 +97,21 @@ class AdminController extends Controller
             return $response->redirect('/_error');
         }
         return $this->renderAdmin('admin/edituser', [
+            'model' =>$user
+        ]);
+    }
+
+    public function createuser(Request $request, Response $response){
+        $user = new user();
+        if($request->isPost()) {
+            $user->loadData($request->getBody());
+            if(Application::$app->session->get('role')==='admin'){
+                Application::$app->controller->setLayout('admin');
+                return $this->renderAdmin('admin/createuser');
+            }
+            return $response->redirect('/_error');
+        }
+        return $this->renderAdmin('admin/createuser', [
             'model' =>$user
         ]);
     }
