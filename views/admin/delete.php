@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
     $post = new Post();
     if($post->deleteOne(['id'=>$id], Application::$app->db)){
-        Application::$app->controller->render('posts');
+        header("location: posts");
     }
 }
 else if(isset($_GET['uid'])){

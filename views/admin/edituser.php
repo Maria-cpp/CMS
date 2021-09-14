@@ -13,34 +13,34 @@ $this->title = 'user';
 
 $user = new user();
 
-if (isset($_POST["uid"])) {
-    $id = $_POST["uid"];
-    $firstname = $_POST["firstname"];
-    $lastname =nl2br($_POST["lastename"]);
-    $email = $_POST["email"];
-    $role = $_POST["role"];
-    if (empty($firstname) or empty($lastname) or empty($email) or empty($role)) {
-        $error = 'All fields are required!';
-    }
-    else{
-        global $pdo;
-        $query = $pdo->prepare('UPDATE users SET username= ?, firstname=?, lastname=?, email=?, role=?, WHERE id = ?');
-        $username = $firstname." ".$lastname;
-        $query->bindValue(1, $username);
-        $query->bindValue(2, $firstname);
-        $query->bindValue(3, $lastname);
-        $query->bindValue(4, $email);
-        $query->bindValue(6, $role);
-        $query->bindValue(7, $id);
-
-        $query->execute();
-    header("location: users");
-    }
-}
-else if (isset($_GET['uid'])) {
+//if (isset($_POST["uid"])) {
+//    $id = $_POST["uid"];
+//    $firstname = $_POST["firstname"];
+//    $lastname =nl2br($_POST["lastename"]);
+//    $email = $_POST["email"];
+//    $role = $_POST["role"];
+//    if (empty($firstname) or empty($lastname) or empty($email) or empty($role)) {
+//        $error = 'All fields are required!';
+//    }
+//    else{
+//        global $pdo;
+//        $query = $pdo->prepare('UPDATE users SET username= ?, firstname=?, lastname=?, email=?, role=?, WHERE id = ?');
+//        $username = $firstname." ".$lastname;
+//        $query->bindValue(1, $username);
+//        $query->bindValue(2, $firstname);
+//        $query->bindValue(3, $lastname);
+//        $query->bindValue(4, $email);
+//        $query->bindValue(6, $role);
+//        $query->bindValue(7, $id);
+//
+//        $query->execute();
+//    header("location: users");
+//    }
+//}
+if (isset($_GET['uid'])) {
     $id = $_GET['uid'];
     $users = $user->findOne(['id'=>$id], Application::$app->db);
-    $posts =json_decode(json_encode($users, true),true);
+    $users =json_decode(json_encode($users, true),true);
 }
 else{
     Application::$app->controller->renderAdmin('admin/_error');
@@ -60,30 +60,22 @@ else{
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="post">
-
-                    <form action="" method="POST">
-                    <div class="row">
-                        <div >
-                            <input type="button" hidden="hidden" name="id" value="<?php echo $id;?>"/>
-                        </div>
+                    <form action="update" method="GET">
                         <div>
-                            <input type="text" name="id" value="<?php echo $users['id'];?>"/>
+                            <label type="text" name="uid">User ID : <?php echo $users['id'];?></label>
                         </div>
-                        <div>
-                            <input type="text" name="email" value="<?php echo $users['email'];?>"/>
-                        </div>
-                        <div>
-                            <input type="text" name="username" value="<?php echo $users['username'];?>"/>
-                        </div>
-                        <div>
-                            <input type="text" name="role" value="<?php echo $users['role'];?>"/>
-                        </div>
-                    </div>
-                        <input type="submit" name="submit" value="Update">
+                        <table class="table table-striped table-hover" id="usertable">
+                            <tbody>
+                            <tr><td><input type="text"  hidden="hidden" name="uid" value="<?php echo " " .$users['id'];?>"/></td></tr>
+                            <tr><td><input type="text"  name="email" value="<?php echo " " .$users['email'];?>"/></td></tr>
+                            <tr><td><input type="text" name="firstname"  value="<?php echo " " .$users['firstname'];?>"/></td></tr>
+                            <tr><td><input type="text" name="lastname"  value="<?php echo " " .$users['lastname'];?>"/></td></tr>
+                            <tr><td><input type="text" name="role"  value="<?php echo " " .$users['role'];?>"/></td></tr>
+                            <tr><td><input type="submit" name="submit" value="Update"></td></tr>
+                            <tr><td><a href="users">&larr; Back</a></td></tr>
+                            </tbody>
+                        </table>
                     </form>
-                    <a href="users">&larr; Back</a>
-                </div>
             </div>
         </div>
     </div>

@@ -33,7 +33,7 @@ if (isset($_GET['uid'])) {
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-secondary" type="button" id="adduser" aria-expanded="false">
-                        <a href="edituser?id=<?php echo $users['id']?>" class="btn">Edit</a></button>
+                        <a href="edituser?uid=<?php echo $users['id']?>" class="btn">Edit</a></button>
                 </div>
             </div>
         </div>

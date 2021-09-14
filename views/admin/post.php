@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
                    <div class = "title"><h2>Title:
                            <?php echo $posts['title']?>
                            <small>
-                               posted <?php echo date('l jS' , $posts['created_at']) ?>
+                               posted <?php echo date('l, jS' , $posts['created_at']) ?>
                            </small>
                        </h2>
                    </div>

@@ -16,7 +16,7 @@ if($_SESSION['role']==='admin') {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
-        $postClass->deleteOne(['id' => $id], Application::$app->db);
+//        $postClass->deleteOne(['id' => $id], Application::$app->db);
         Application::$app->response->redirect('posts');
     }
     $posts = $postClass->fetchAll(Application::$app->db);
@@ -71,7 +71,7 @@ if($_SESSION['role']==='admin') {
                                     <td style="width: 60px; text-align: center"><a href="editpost?id=<?php echo $post['id']; ?>" class="mr-3" title="Update " data-toggle="tooltip">
                                             <span class="glyphicon glyphicon-pencil"></span></a>
                                     </td>
-                                    <td style="width: 60px; text-align: center"><a href="posts?id=<?php echo $post['id']; ?>" class="mr-3" title="Delete" data-toggle="tooltip">
+                                    <td style="width: 60px; text-align: center"><a href="delete?id=<?php echo $post['id']; ?>" class="mr-3" title="Delete" data-toggle="tooltip">
                                             <span class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                 </tr>

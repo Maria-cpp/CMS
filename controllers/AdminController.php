@@ -71,25 +71,37 @@ class AdminController extends Controller
     public function edit(Request $request, Response $response){
         $post = new Post();
         if($request->isPost()) {
-            echo "<br> in edit func <br>";
             $post->loadData($request->getBody());
                 Application::$app->session->setFlash('success', 'Data Updated.');
                 if(Application::$app->session->get('role')==='admin'){
-                    echo "in edit func 2 <br>";
-
                     Application::$app->controller->setLayout('admin');
                     return $this->renderAdmin('admin/editpost');
                 }
-            echo "in edit func error <br>";
 
             return $response->redirect('/_error');
         }
-        echo "in edit func is get mode<br>";
 
         return $this->renderAdmin('admin/editpost', [
             'model' =>$post
         ]);
     }
+
+    public function edituser(Request $request, Response $response){
+        $user = new user();
+        if($request->isPost()) {
+            $user->loadData($request->getBody());
+//            Application::$app->session->setFlash('success', 'Data Updated.');
+            if(Application::$app->session->get('role')==='admin'){
+                Application::$app->controller->setLayout('admin');
+                return $this->renderAdmin('admin/edituser');
+            }
+            return $response->redirect('/_error');
+        }
+        return $this->renderAdmin('admin/edituser', [
+            'model' =>$user
+        ]);
+    }
+
 
     public function profile()
     {
@@ -102,6 +114,18 @@ class AdminController extends Controller
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
             return $this->renderAdmin('admin/delete');
+        }
+        else{
+            $restrict = new AuthMiddleware();
+            $restrict->execute();
+        }
+    }
+
+    public function update()
+    {
+        if(Application::$app->session->get('role')==='admin'){
+            Application::$app->controller->setLayout('admin');
+            return $this->renderAdmin('admin/update');
         }
         else{
             $restrict = new AuthMiddleware();

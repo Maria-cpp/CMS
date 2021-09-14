@@ -16,7 +16,6 @@ abstract class DbModel extends Model
 
     public function save(): bool
     {
-
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
@@ -30,7 +29,6 @@ abstract class DbModel extends Model
         return true;
 
     }
-
 
     public function findOne($where, $db)
     {
