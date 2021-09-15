@@ -13,7 +13,8 @@ class Post extends DbModel
     public string $title = '';
     public string $author = '';
     public string $content = '';
-    public string $category = '';
+    public string $category_id = '';
+    public string $tags = '';
 
     public function rules(): array
     {

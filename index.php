@@ -62,6 +62,10 @@ $app->router->get('/admin/update' , [AdminController::class, 'update']);
 $app->router->get('/admin/createuser' , [AdminController::class, 'createuser']);
 $app->router->post('/admin/createuser' , [AdminController::class, 'createuser']);
 
+$app->router->get('/admin/createpost' , [AdminController::class, 'createpost']);
+$app->router->post('/admin/createpost' , [AdminController::class, 'createpost']);
+
+
 $app->router->get('/admin/edituser' , [AdminController::class, 'edituser']);
 $app->router->post('/admin/edituser' , [AdminController::class, 'edituser']);
 

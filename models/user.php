@@ -17,6 +17,7 @@ class user extends UserModel
     public string $email = '';
     public string $password = '';
     public string $confirmPassword = '';
+    public string $role = '';
     public int $status = self::STATUS_INACTIVE;
 
     public function tableName():string{

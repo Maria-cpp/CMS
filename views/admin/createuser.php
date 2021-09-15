@@ -22,7 +22,7 @@ if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['ema
     $role = $_POST['role'];
     $query = Application::$app->db->pdo->prepare("INSERT INTO users (email, password, username, firstname, lastname, role) VALUES ('$email', '$password', '$username', '$firstname', '$lastname', '$role');");
     $query->execute();
-    header("location : users");
+    header("location: users");
 }
 ?>
 
@@ -31,7 +31,7 @@ if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['ema
     <div class="panel">
         <div class="panel-body">
             <div class="row">
-                    <form action="" method="POST">
+                    <form action="createuser" method="POST">
                         <table class="table table-striped table-hover" id="usertable">
                             <tbody>
                             <tr><td><label>Enter Firstname : </label></td><td><input type="text" name="firstname"/></td></tr>
