@@ -33,7 +33,6 @@ if (isset($_GET["id"])) {
         $error = 'All fields are required!';
     }
     else{
-        //        $query = Application::$app->db->pdo->prepare("UPDATE posts SET title='$title', content='$content', updated_at='$time', category_id ='$cid' WHERE id=$id;");
         $query = Application::$app->db->pdo->prepare("UPDATE posts SET title=?, content=?, updated_at=?, category_id =? WHERE id=?;");
         $query->bindValue(1, $title);
         $query->bindValue(2, $content);

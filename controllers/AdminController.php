@@ -117,9 +117,9 @@ class AdminController extends Controller
     }
 
     public function createpost(Request $request, Response $response){
-        $user = new Post();
+        $post = new Post();
         if($request->isPost()) {
-            $user->loadData($request->getBody());
+            $post->loadData($request->getBody());
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
                 return $this->renderAdmin('admin/createpost');
@@ -127,7 +127,7 @@ class AdminController extends Controller
             return $response->redirect('/_error');
         }
         return $this->renderAdmin('admin/createpost', [
-            'model' =>$user
+            'model' =>$post
         ]);
     }
 

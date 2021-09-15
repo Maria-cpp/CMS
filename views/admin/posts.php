@@ -15,8 +15,6 @@ $posts = $postClass->fetchAll(Application::$app->db);
 if($_SESSION['role']==='admin') {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-
-//        $postClass->deleteOne(['id' => $id], Application::$app->db);
         Application::$app->response->redirect('posts');
     }
     $posts = $postClass->fetchAll(Application::$app->db);
@@ -32,7 +30,7 @@ if($_SESSION['role']==='admin') {
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
-                        <a href="posts" class="btn">Add New</a></button>
+                        <a href="createpost" class="btn">Add New</a></button>
                 </div>
             </div>
         </div>

@@ -1,13 +1,10 @@
 <?php
-/** @var $model \app\models\post */
+/** @var $model \app\models\user */
 /** @var $this \zum\phpmvc\View */
 
-use app\models\Category;
 use app\models\user;
 use zum\phpmvc\Application;
 
-$category = new Category();
-$categories = $category->fetchAll(Application::$app->db);
 
 $this->title = 'user';
 
@@ -21,6 +18,7 @@ if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['ema
     $password = $_POST['password'];
     $role = $_POST['role'];
     $query = Application::$app->db->pdo->prepare("INSERT INTO users (email, password, username, firstname, lastname, role) VALUES ('$email', '$password', '$username', '$firstname', '$lastname', '$role');");
+
     $query->execute();
     header("location: users");
 }
