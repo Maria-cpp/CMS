@@ -19,7 +19,7 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
-        $statement = self::prepare("INSERT INTO $tableName(" . implode(',', $attributes) . ")
+        $statement = Application::$app->db->pdo->prepare("INSERT INTO $tableName(" . implode(',', $attributes) . ")
             VALUES(" . implode(',', $params) . ")");
 
         foreach ($attributes as $attribute) {

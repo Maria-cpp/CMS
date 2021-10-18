@@ -1,6 +1,5 @@
 <?php
 
-
 namespace app\models;
 
 
@@ -35,7 +34,8 @@ class LoginForm extends Model
         $lastname = $userdata->lastname;
         $email = $userdata->email;
         $role= $userdata->role;
-        if(password_verify($this->password, $pass)){
+        $hash = password_hash($pass, PASSWORD_DEFAULT);
+        if(!password_verify($this->password, $hash)){
             $this->addError('password', 'Password is incorrect');
             return false;
         }

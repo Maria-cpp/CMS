@@ -26,13 +26,14 @@ class AuthController extends Controller
             $loginFOrm->loadData($request->getBody());
 
             if($loginFOrm->validate() && $loginFOrm->login(Application::$app->db)){
+                echo "in validate & login func";
                 Application::$app->controller->setLayout('admin');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
                     $response->redirect('/admin/dashboard');
                 }
                 else{
-                    $response->redirect('/home');
+                    $response->redirect('/');
                 }
                 return;
             }

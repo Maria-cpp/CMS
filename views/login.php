@@ -1,7 +1,7 @@
 <?php
 /** @var $model \app\models\user */
 /** @var $this \zum\phpmvc\View */
-$this->title = 'login'
+$this->title = 'login';
 ?>
 
 <h1>Login</h1>
