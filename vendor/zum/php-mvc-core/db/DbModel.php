@@ -19,12 +19,10 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
+        $username = $this->{firstname}." ".$this->{lastname};
         $statement = Application::$app->db->pdo->prepare("INSERT INTO $tableName(" . implode(',', $attributes) . ")
-            VALUES(" . implode(',', $params) . ")");
+            VALUES('". $this->{firstname}."'" .",'". $this->{lastname} . "','" . $this->{email}. "','" . $this->{password} . "','". $username."');");
 
-        foreach ($attributes as $attribute) {
-            $statement->bindValue(":$attribute", $this->{$attribute});
-        }
         $statement->execute();
         return true;
 

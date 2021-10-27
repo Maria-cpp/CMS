@@ -14,6 +14,7 @@ class user extends UserModel
 
     public string $firstname = '';
     public string $lastname = '';
+    public string $username = '';
     public string $email = '';
     public string $password = '';
     public string $confirmPassword = '';
@@ -31,6 +32,7 @@ class user extends UserModel
     public function save(): bool
     {
         $this->status = self::STATUS_INACTIVE;
+        echo $this->password;
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         return parent::save();
     }
@@ -49,7 +51,7 @@ class user extends UserModel
 
     public function attributes(): array
     {
-        return ['firstname', 'lastname', 'email', 'password'];
+        return ['firstname', 'lastname', 'email', 'password', 'username'];
     }
 
     public function labels(): array
