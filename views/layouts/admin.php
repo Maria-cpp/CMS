@@ -47,7 +47,7 @@ $user = new user();
                 <a class="nav-link" href="posts">posts</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="createuser" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                <a class="nav-link dropdown-toggle" href="category" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
@@ -87,7 +87,7 @@ $user = new user();
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="createuser">Add User</a></li>
                         <li><a class="dropdown-item" href="createpost">Add Post</a></li>
-                        <li><a class="dropdown-item" href="#">Add Category</a></li>
+                        <li><a class="dropdown-item" href="addcategory">Add Category</a></li>
                     </ul>
                 </div>
             </div>
