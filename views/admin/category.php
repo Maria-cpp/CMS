@@ -44,7 +44,7 @@ if($_SESSION['role']==='admin') {
                                 <tr id ='<?php $category['id']; ?>'>
                                     <td><?php echo $category['id'];?></td>
                                     <td><?php echo $category['category_name']; ?></td>
-                                    <td><a href="#" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                    <td><a href="delete?cid=<?php echo $category['id'] ?>" class="mr-3" title="Delete Record" data-toggle="tooltip"><span class="glyphicon glyphicon-trash"></span></a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>

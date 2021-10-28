@@ -1,4 +1,6 @@
 <?php
+
+use app\models\Category;
 use app\models\Post;
 use app\models\user;
 use zum\phpmvc\Application;
@@ -17,6 +19,13 @@ else if(isset($_GET['uid'])){
         header("location: users");
     }
 }// get id through query string
+else if(isset($_GET['cid'])){
+    $id = $_GET['cid'];
+    $category = new Category();
+    if($category->deleteOne(['id'=>$id], Application::$app->db)){
+        header("location: category");
+    }
+}
 else
 {
     Application::$app->controller->render('_error');; // display error message if not delete
