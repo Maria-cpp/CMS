@@ -18,7 +18,7 @@ $users = $user->fetchAll(Application::$app->db);
                     <h3 class="panel-title">Users </h3>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-secondary" type="button" id="addpost" aria-expanded="false">
+                    <button class="btn btn-secondary" type="button" id="adduser" aria-expanded="false">
                         <a href="createuser" class="btn">Add New</a></button>
                 </div>
             </div>

@@ -23,7 +23,7 @@ if($_SESSION['role']==='admin') {
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-secondary" type="button" id="category" aria-expanded="false">
-                        <a href="category" class="btn">Add New</a></button>
+                        <a href="addcategory" class="btn">Add New</a></button>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use app\models\LoginForm;
 use app\models\Post;
 use app\models\user;
@@ -113,6 +114,21 @@ class AdminController extends Controller
         }
         return $this->renderAdmin('admin/createuser', [
             'model' =>$user
+        ]);
+    }
+
+    public function createCategory(Request $request, Response $response){
+        $category = new Category();
+        if($request->isPost()) {
+            $category->loadData($request->getBody());
+            if(Application::$app->session->get('role')==='admin'){
+                Application::$app->controller->setLayout('admin');
+                return $this->renderAdmin('admin/addcategory');
+            }
+            return $response->redirect('/_error');
+        }
+        return $this->renderAdmin('admin/addcategory', [
+            'model' =>$category
         ]);
     }
 
