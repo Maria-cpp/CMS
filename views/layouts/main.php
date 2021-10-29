@@ -1,5 +1,11 @@
 <?php
+
+use app\models\Category;
 use zum\phpmvc\Application;
+
+$category = new Category();
+
+$categories = $category->fetchAll(Application::$app->db);
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,12 +38,12 @@ use zum\phpmvc\Application;
                 <a class="nav-link" href="/posts">Posts</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="category" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <a class="dropdown-toggle" href="" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                    <?php foreach ($categories as $category){ ?>
+                        <li><a class="dropdown-item" href="category?cid=<?php echo $category['id']?>"> <?php echo $category['category_name'] ?> </a></li>
+                    <?php } ?>
+                </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="tags" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>

@@ -22,7 +22,8 @@ abstract class DbModel extends Model
         $username = $this->{firstname}." ".$this->{lastname};
         $statement = Application::$app->db->pdo->prepare("INSERT INTO $tableName(" . implode(',', $attributes) . ")
             VALUES('". $this->{firstname}."'" .",'". $this->{lastname} . "','" . $this->{email}. "','" . $this->{password} . "','". $username."');");
-
+//        echo "<pre>";
+//        var_dump($statement);
         $statement->execute();
         return true;
 

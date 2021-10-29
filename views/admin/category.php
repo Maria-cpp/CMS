@@ -8,7 +8,6 @@ use zum\phpmvc\Application;
 
 $category = new Category();
 
-
 $categories = $category->fetchAll(Application::$app->db);
 
 if($_SESSION['role']==='admin') {
