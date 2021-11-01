@@ -38,7 +38,7 @@ if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['ema
                             <tr><td><label>Enter password : </label></td><td><input type="text" name="password"/></td></tr>
                             <tr><td><label>Enter role : </label></td><td><input type="text" name="role"/></td></tr>
                             <tr><td colspan="2"><input type="submit" name="submit" value="Add User"></td></tr>
-                            <tr><td colspan="2"><a href="admin/users">&larr; Back</a></td></tr>
+                            <tr><td colspan="2"><a href="users">&larr; Back</a></td></tr>
                             </tbody>
                         </table>
                     </form>

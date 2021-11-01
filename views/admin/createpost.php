@@ -46,28 +46,9 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
                                 </select><br/><br/></td></tr>
                         <tr><td><label>Enter Content: </label></td><td><textarea rows="20", cols=100, name="content"></textarea></td></tr>
                         <tr><td colspan="2"><input type="submit" name="submit" value="Add Post"></td></tr>
-                        <tr><td colspan="2"><a href="admin/posts">&larr; Back</a></td></tr>
+                        <tr><td colspan="2"><a href="posts">&larr; Back</a></td></tr>
                         </tbody>
                     </table>
-
-                                                         <!--                       <div class="title">-->
-<!--                            <label>Title : </label>-->
-<!--                            <input type="text" name="title" />-->
-<!--                        </div>-->
-<!--                        <div class="col"><label>Category : </label>-->
-<!--                            <select name="category_id">-->
-<!--                                --><?php //foreach($categories as $category) {?>
-<!--                                    <option value="--><?php //echo $category['id']?><!--">-->
-<!--                                        --><?php //echo $category['category_name'];?>
-<!--                                    </option>-->
-<!--                                --><?php //}?>
-<!--                            </select><br/><br/>-->
-<!--                        </div>-->
-<!--                        <div class="textarea">-->
-<!--                            <label>Content</label> <br>-->
-<!--                            <textarea rows="20", cols=100, name="content"></textarea><br /><br />-->
-<!--                        </div>-->
-<!--                    <input type="submit" name="submit" value="Add Post">-->
                 </form>
             </div>
         </div>

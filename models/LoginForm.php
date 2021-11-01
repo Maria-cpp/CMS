@@ -34,8 +34,6 @@ class LoginForm extends Model
         $lastname = $userdata->lastname;
         $email = $userdata->email;
         $role= $userdata->role;
-        echo $this->password."<br>";
-        echo $pass;
         if(!password_verify($this->password, $pass)){
             $this->addError('password', 'Password is incorrect');
             return false;

@@ -29,7 +29,7 @@ if (isset($_POST['category_name'])) {
                             <tbody>
                             <tr><td><label>Enter Category Name : </label></td><td><input type="text" name="category_name"/></td></tr>
                             <tr><td colspan="2"><input type="submit" name="submit" value="Add Category"></td></tr>
-                            <tr><td colspan="2"><a href="admin/category">&larr; Back</a></td></tr>
+                            <tr><td colspan="2"><a href="category">&larr; Back</a></td></tr>
                             </tbody>
                         </table>
                     </form>
