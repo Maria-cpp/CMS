@@ -34,11 +34,15 @@ class AuthController extends Controller
                 else{
                     $response->redirect('/');
                 }
-                return;
             }
         }
-        $this->setLayout('/auth');
-        return $this->render('login',['model'=>$loginFOrm]);
+        elseif (!Application::isGuest()) {
+            $response->redirect('/');
+        }
+        else{
+            $this->setLayout('/auth');
+            return $this->render('login', ['model' => $loginFOrm]);
+        }
     }
 
     public function register(Request $request)

@@ -26,9 +26,15 @@ class AdminController extends Controller
         $params = [
             'name' => "Admin"
         ];
-        Application::$app->layout = 'admin';
-        Application::$app->controller->setLayout('admin');
-        return $this->renderAdmin('admin/dashboard' , $params);
+        if($_SESSION['role']==='admin'){
+            Application::$app->layout = 'admin';
+            Application::$app->controller->setLayout('admin');
+            return $this->renderAdmin('admin/dashboard' , $params);
+        }
+        else{
+            $restrict = new adminMiddleware( ['admin/dashboard']);
+            $restrict->execute();
+        }
     }
 
 
@@ -185,7 +191,7 @@ class AdminController extends Controller
             return $this->renderAdmin('admin/users');
         }
         else{
-            $restrict = new AuthMiddleware();
+            $restrict = new AdminMiddleware( ['admin/users']);
             $restrict->execute();
         }
     }
@@ -197,7 +203,7 @@ class AdminController extends Controller
             return $this->renderAdmin('admin/user');
         }
         else{
-            $restrict = new AuthMiddleware();
+            $restrict = new dminMiddleware( ['admin/user']);
             $restrict->execute();
         }
     }

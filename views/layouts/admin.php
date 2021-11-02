@@ -2,9 +2,13 @@
 
 <?php
 
+use app\controllers\AdminController;
 use app\models\Post;
 use app\models\Category;
 use app\models\user;
+use zum\phpmvc\Application;
+use zum\phpmvc\middlewares\AdminMiddleware;
+use zum\phpmvc\middlewares\AuthMiddleware;
 
 $post = new Post();
 $category = new Category();
@@ -29,6 +33,17 @@ $user = new user();
 </head>
 
 <body>
+<?php if($_SESSION['role'] === 'user' || Application::isGuest()) :?>
+<nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="#">Admin Panel</a>
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item"><a class="nav-link" href="/">Go to Website </a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout  </a></li>
+    </ul>
+</nav>
+
+{{content}}
+<?php else : ?>
 <nav class="navbar navbar-expand-md">
     <a class="navbar-brand" href="#">Admin Panel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +86,6 @@ $user = new user();
         </ul>
     </div>
 </nav>
-
 <header id="header">
     <div class="container">
         <div class ="row">
@@ -130,8 +144,7 @@ $user = new user();
         </div>
     </div>
 </section>
-
-
+<?php endif;?>
 <footer id="footer" class="container-fluid">
     <p> Copyright Admin, &copy; 2021 </p>
 </footer>
