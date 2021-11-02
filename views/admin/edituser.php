@@ -15,7 +15,7 @@ $user = new user();
 
 if (isset($_GET['uid'])) {
     $id = $_GET['uid'];
-    $users = $user->findOne(['id'=>$id], Application::$app->db);
+    $users = $user->findOne(['id'=>$id]);
     $users =json_decode(json_encode($users, true),true);
 }
 else{

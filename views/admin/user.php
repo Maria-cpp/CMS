@@ -12,10 +12,9 @@ $post = new Post();
 $user = new user();
 if (isset($_GET['uid'])) {
     $id = $_GET['uid'];
-    $users = $user->findOne(['id'=>$id], Application::$app->db);
+    $users = $user->findOne(['id'=>$id]);
     $users =json_decode(json_encode($users, true),true);
     $posts = $post->fetchAll(Application::$app->db);
-//    $posts =json_decode(json_encode($posts, true),true);
 
 } else {
     Application::$app->controller->renderAdmin('admin/_error');

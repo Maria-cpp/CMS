@@ -17,7 +17,7 @@ if($_SESSION['role']==='admin') {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
-        $postClass->deleteOne(['id' => $id], Application::$app->db);
+        $postClass->deleteOne(['id' => $id]);
         Application::$app->response->redirect('posts');
     }
     $posts = $postClass->fetchAll(Application::$app->db);

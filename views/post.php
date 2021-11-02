@@ -20,7 +20,7 @@ $this->title = 'post';
 $post = new Post();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $posts = $post->findOne(['id'=>$id], Application::$app->db);
+    $posts = $post->findOne(['id'=>$id]);
     $posts =json_decode(json_encode($posts, true),true);
 } else {
     Application::$app->controller->renderAdmin('admin/_error');

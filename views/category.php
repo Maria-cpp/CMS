@@ -11,7 +11,7 @@ $category = new Category();
 
 $this->title = 'Posts';
 $postClass = new Post();
-$posts = $postClass->fetchAll(Application::$app->db);
+$posts = $postClass->fetchAll();
 $id = 0;
 if (isset($_GET['cid'])) {
     $id = $_GET['cid'];
