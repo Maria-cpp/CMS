@@ -13,6 +13,6 @@
     },
     "require": {
         "vlucas/phpdotenv": "^5.3",
-        "zum/php-mvc-core": "dev-master"
+        "maria/php-mvc-core": "dev-master"
     }
 }

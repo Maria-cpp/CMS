@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9f8ada6613e99856b7994376be32b31",
+    "content-hash": "c01ad933900ec119f019112210af734e",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -66,6 +66,40 @@
                 }
             ],
             "time": "2021-10-17T19:48:54+00:00"
+        },
+        {
+            "name": "maria/php-mvc-core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maria-cpp/php-mvc-core.git",
+                "reference": "2659a59c76d1ca0ebba77ad0f3f53e35c2915471"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maria-cpp/php-mvc-core/zipball/2659a59c76d1ca0ebba77ad0f3f53e35c2915471",
+                "reference": "2659a59c76d1ca0ebba77ad0f3f53e35c2915471",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "zum\\phpmvc\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Maria-cpp",
+                    "email": "maria.naseem@mediapark.pk"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/Maria-cpp/php-mvc-core/issues",
+                "source": "https://github.com/Maria-cpp/php-mvc-core/tree/v.0.1.6"
+            },
+            "time": "2021-11-02T10:50:46+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -455,47 +489,13 @@
                 }
             ],
             "time": "2021-10-02T19:24:42+00:00"
-        },
-        {
-            "name": "zum/php-mvc-core",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maria-cpp/php-mvc-core.git",
-                "reference": "fbd1698689a146699943585a2fd3baf2aa15311c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maria-cpp/php-mvc-core/zipball/fbd1698689a146699943585a2fd3baf2aa15311c",
-                "reference": "fbd1698689a146699943585a2fd3baf2aa15311c",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "zum\\phpmvc\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Maria-cpp",
-                    "email": "maria.naseem@mediapark.pk"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/Maria-cpp/php-mvc-core/issues",
-                "source": "https://github.com/Maria-cpp/php-mvc-core/tree/master"
-            },
-            "time": "2021-11-02T07:52:49+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zum/php-mvc-core": 20
+        "maria/php-mvc-core": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
