@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $posts = $post->findOne(['id'=>$id]);
     $posts =json_decode(json_encode($posts, true),true);
 } else {
-    Application::$app->controller->renderAdmin('admin/_error');
+    Application::$app->controller->render('admin/_error');
     exit();
 }
 ?>

@@ -48,8 +48,8 @@ class LoginForm extends Model
         return true;
     }
 
-    public function login($db){
-        $userdata = user::findOne(['email'=> $this->email], $db);
+    public function login(){
+        $userdata = user::findOne(['email'=> $this->email]);
         if(!$this->sessionCredentials($userdata)){
             return false;
         }

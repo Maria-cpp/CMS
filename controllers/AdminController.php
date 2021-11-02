@@ -29,7 +29,7 @@ class AdminController extends Controller
         if($_SESSION['role']==='admin'){
             Application::$app->layout = 'admin';
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/dashboard' , $params);
+            return $this->render('admin/dashboard' , $params);
         }
         else{
             $restrict = new adminMiddleware( ['admin/dashboard']);
@@ -46,12 +46,12 @@ class AdminController extends Controller
                 Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
-                    return $this->renderAdmin('admin/posts');
+                    return $this->render('admin/posts');
                 }
                 return $response->redirect('/_error');
             }
         }
-        return $this->renderAdmin('admin/posts', [
+        return $this->render('admin/posts', [
             'model' =>$post
         ]);
     }
@@ -65,12 +65,12 @@ class AdminController extends Controller
                 Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
-                    return $this->renderAdmin('admin/post');
+                    return $this->render('admin/post');
                 }
                 return $response->redirect('/_error');
             }
         }
-        return $this->renderAdmin('admin/post', [
+        return $this->render('admin/post', [
             'model' =>$post
         ]);
     }
@@ -82,13 +82,13 @@ class AdminController extends Controller
                 Application::$app->session->setFlash('success', 'Data Updated.');
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');
-                    return $this->renderAdmin('admin/editpost');
+                    return $this->render('admin/editpost');
                 }
 
             return $response->redirect('/_error');
         }
 
-        return $this->renderAdmin('admin/editpost', [
+        return $this->render('admin/editpost', [
             'model' =>$post
         ]);
     }
@@ -99,11 +99,11 @@ class AdminController extends Controller
             $user->loadData($request->getBody());
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
-                return $this->renderAdmin('admin/edituser');
+                return $this->render('admin/edituser');
             }
             return $response->redirect('/_error');
         }
-        return $this->renderAdmin('admin/edituser', [
+        return $this->render('admin/edituser', [
             'model' =>$user
         ]);
     }
@@ -114,11 +114,11 @@ class AdminController extends Controller
             $user->loadData($request->getBody());
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
-                return $this->renderAdmin('admin/createuser');
+                return $this->render('admin/createuser');
             }
             return $response->redirect('/_error');
         }
-        return $this->renderAdmin('admin/createuser', [
+        return $this->render('admin/createuser', [
             'model' =>$user
         ]);
     }
@@ -129,11 +129,11 @@ class AdminController extends Controller
             $category->loadData($request->getBody());
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
-                return $this->renderAdmin('admin/addcategory');
+                return $this->render('admin/addcategory');
             }
             return $response->redirect('/_error');
         }
-        return $this->renderAdmin('admin/addcategory', [
+        return $this->render('admin/addcategory', [
             'model' =>$category
         ]);
     }
@@ -144,11 +144,11 @@ class AdminController extends Controller
             $post->loadData($request->getBody());
             if(Application::$app->session->get('role')==='admin'){
                 Application::$app->controller->setLayout('admin');
-                return $this->renderAdmin('admin/createpost');
+                return $this->render('admin/createpost');
             }
             return $response->redirect('/_error');
         }
-        return $this->renderAdmin('admin/createpost', [
+        return $this->render('admin/createpost', [
             'model' =>$post
         ]);
     }
@@ -164,7 +164,7 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/delete');
+            return $this->render('admin/delete');
         }
         else{
             $restrict = new AuthMiddleware();
@@ -176,7 +176,7 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/update');
+            return $this->render('admin/update');
         }
         else{
             $restrict = new AuthMiddleware();
@@ -188,7 +188,7 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/users');
+            return $this->render('admin/users');
         }
         else{
             $restrict = new AdminMiddleware( ['admin/users']);
@@ -200,10 +200,10 @@ class AdminController extends Controller
     {
         if(Application::$app->session->get('role')==='admin'){
             Application::$app->controller->setLayout('admin');
-            return $this->renderAdmin('admin/user');
+            return $this->render('admin/user');
         }
         else{
-            $restrict = new dminMiddleware( ['admin/user']);
+            $restrict = new AdminMiddleware( ['admin/user']);
             $restrict->execute();
         }
     }
@@ -211,7 +211,7 @@ class AdminController extends Controller
     public function category()
     {
         Application::$app->controller->setLayout('admin');
-        return $this->renderAdmin('admin/category');
+        return $this->render('admin/category');
     }
 
     public function tags()

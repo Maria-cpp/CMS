@@ -64,7 +64,7 @@ else if (isset($_GET["uid"])) {
     }
 }
 else{
-    Application::$app->controller->renderAdmin('admin/_error');
+    Application::$app->controller->render('admin/_error');
     exit();
 }
 ?>

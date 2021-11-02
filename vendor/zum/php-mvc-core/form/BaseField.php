@@ -10,7 +10,6 @@ abstract class BaseField
 {
     public Model $model;
     public string $attribute;
-    public string $data;
     /**
      * Field constructor.
      * @param Model $model
@@ -41,7 +40,6 @@ abstract class BaseField
             $this->model->getFirstError($this->attribute)
         );
     }
-    
     public function setAttribute($attribute){
         $this->attribute=$attribute;
     }

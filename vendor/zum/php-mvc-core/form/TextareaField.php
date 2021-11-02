@@ -16,6 +16,7 @@ class TextareaField extends BaseField
         $this->type = self::TYPE_TEXT;
         parent::__construct($model, $attribute);
     }
+
     public function renderInput(): string
     {
         return sprintf('<textarea name ="%s" class="form-control%s">%s</textarea>',
@@ -24,5 +25,4 @@ class TextareaField extends BaseField
             $this->model->{$this->attribute}
         );
     }
-
 }

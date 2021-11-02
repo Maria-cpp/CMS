@@ -17,7 +17,7 @@ if (isset($_GET['uid'])) {
     $posts = $post->fetchAll(Application::$app->db);
 
 } else {
-    Application::$app->controller->renderAdmin('admin/_error');
+    Application::$app->controller->render('admin/_error');
     exit();
 }
 ?>

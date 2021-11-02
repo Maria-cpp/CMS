@@ -27,7 +27,7 @@ class Post extends DbModel
     public function Post($db): bool
     {
 
-        $userdata = Post::findOne(['id'=> $this->id], $db);
+        $userdata = Post::findOne(['id'=> $this->id]);
         if(!$this->sessionCredentials($userdata)){
             return false;
         }

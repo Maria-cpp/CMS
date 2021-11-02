@@ -15,5 +15,4 @@ class Response
         header('Location: '.$url);
     }
 
-
 }
