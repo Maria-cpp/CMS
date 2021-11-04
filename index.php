@@ -7,7 +7,6 @@ use zum\phpmvc\Application;
 use \app\controllers\SiteController;
 use \app\controllers\AuthController;
 
-echo dirname(__DIR__);
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -21,7 +20,7 @@ $config = [
 ];
 
 
-$app = new Application(dirname(__DIR__), $config);
+$app = new Application(__DIR__, $config);
 
 $app->router->get('/' , [SiteController::class, 'home']);
 $app->router->post('/home' , [SiteController::class, 'home']);

@@ -27,8 +27,8 @@ $user = new user();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../../src/includes/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../src/includes/css/style.css">
+    <link rel="stylesheet" href="../../includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../includes/css/style.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 </head>
 
@@ -153,10 +153,11 @@ $user = new user();
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../../src/includes/js/cms.js"></script>
+<script src="../../includes/js/cms.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="../../src/includes/js/bootstrap.min.js"></script>
-<script src="../../src/includes/js/bootstrap.bundle.js"></script>
-<script src="../../src/includes/js/bootstrap.bundle.js.map"></script>
+<script src="../../includes/js/bootstrap.min.js"></script>
+<script src="../../includes/js/bootstrap.bundle.js"></script>
+<script src="../../includes/js/bootstrap.bundle.js.map"></script>
 </body>
 </html>
+git
