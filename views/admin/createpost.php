@@ -20,7 +20,8 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
     $cid = $_POST['category_id'];
     $time = date('Y-m-d H:i:s');
     $content = $_POST['content'];
-    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, category_id) VALUES ('$title','$author','$content','$time','$cid');");
+    $tags = $_POST['articleTags'];
+    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, created_at, tags, category_id) VALUES ('$title','$author','$content','$time','$tags','$cid');");
     $query->execute();
     header("location: posts");
 }
@@ -44,7 +45,13 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
                                         </option>
                                     <?php }?>
                                 </select><br/><br/></td></tr>
-                        <tr><td><label>Enter Content: </label></td><td><textarea rows="20", cols=100, name="content"></textarea></td></tr>
+                        <tr><td><label>Enter Content: </label></td><td><textarea rows="15", cols=100, name="content"></textarea></td></tr>
+                        <tr>
+                            <td><label>Articles Tags</label></td>
+                            <td><input type='text' name="articleTags" style="width:100%;height:40px">
+                            <br><label>(Separated by comma without space)</label>          
+                            </td>
+                        </tr>
                         <tr><td colspan="2"><input type="submit" name="submit" value="Add Post"></td></tr>
                         <tr><td colspan="2"><a href="posts">&larr; Back</a></td></tr>
                         </tbody>
