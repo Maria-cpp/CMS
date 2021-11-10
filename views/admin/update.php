@@ -27,18 +27,20 @@ function test_input($data): string
 if (isset($_GET["id"])) {
     $title = test_input($_GET["title"]);
     $content = test_input(nl2br($_GET["content"]));
-    $cid = test_input($_GET["cid"]);
+    $cid = test_input($_GET["id"]);
+    $tags = test_input($_GET["articleTags"]);
     $id = test_input($_GET["id"]);
     if (empty($title) or empty($content)) {
         $error = 'All fields are required!';
     }
     else{
-        $query = Application::$app->db->pdo->prepare("UPDATE posts SET title=?, content=?, updated_at=?, category_id =? WHERE id=?;");
+        $query = Application::$app->db->pdo->prepare("UPDATE posts SET title=?, content=?, updated_at=?, tags=?, category_id =? WHERE id=?;");
         $query->bindValue(1, $title);
         $query->bindValue(2, $content);
         $query->bindValue(3, date('Y-m-d H:i:s'));
-        $query->bindValue(4, $cid);
-        $query->bindValue(5, $id);
+        $query->bindValue(4, $tags);
+        $query->bindValue(5, $cid);
+        $query->bindValue(6, $id);
 
         $query->execute();
         header("location: post?id=". "$id");

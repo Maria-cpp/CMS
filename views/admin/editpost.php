@@ -34,34 +34,37 @@ else{
                 </div>
             </div>
         </div>
+
+        <div class="panel">
         <div class="panel-body">
             <div class="row">
-                <div class="post">
-                    <form action="update" method="GET">
-                    <div class="row">
+                <form action="update" method="GET">
+                    <table class="table table-striped table-hover" id="usertable">
+                        <tbody>
                         <div>
-                            <input type="text" hidden="hidden" name="id" value="<?php echo $posts['id'];?>"/>
+                            <input type="text" hidden="hidden" name="id" value="<?php echo $posts['id'];?>">
                         </div>
-                        <div class="title">
-                            <input type="text" name="title" value="<?php echo $posts['title'];?>"/>
-                        </div>
-                        <div class="col">
-                            <select name="cid">
-                                <?php foreach($categories as $category) {?>
-                                    <option value="<?php echo $category['id']?>">
-                                        <?php echo $category['category_name'];?>
-                                    </option>
-                                <?php }?>
-                            </select><br/><br/>
-                        </div>
-                        <div class="textarea">
-                            <textarea rows="20", cols=100, name="content"> <?php echo $posts['content'];?></textarea><br /><br />
-                        </div>
-                    </div>
-                        <input type="submit" name="submit" value="Update">
-                    </form>
-                    <a href="posts">&larr; Back</a>
-                </div>
+                        <tr><td><label>Enter Title : </label></td><td><input type="text" name="title" value = <?php echo $posts['title'];?>></td></tr>
+                        <tr><td><label>Select category : </label></td>
+                            <td> <select name="category_id">
+                                    <?php foreach($categories as $category) {?>
+                                        <option value="<?php echo $category['id']?>">
+                                            <?php echo $category['category_name'];?>
+                                        </option>
+                                    <?php }?>
+                                </select><br/><br/></td></tr>
+                        <tr><td><label>Enter Content: </label></td><td><textarea rows="15", cols=100, name="content"><?php echo $posts['content'];?></textarea></td></tr>
+                        <tr>
+                            <td><label>Articles Tags</label></td>
+                            <td><input type='text' name="articleTags" value="<?php echo $posts['tags'];?>" style="width:100%;height:40px">
+                            <br><label>(Separated by comma without space)</label>          
+                            </td>
+                        </tr>
+                        <tr><td colspan="2"><input type="submit" name="submit" value="Update"></td></tr>
+                        <tr><td colspan="2"><a href="posts">&larr; Back</a></td></tr>
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
