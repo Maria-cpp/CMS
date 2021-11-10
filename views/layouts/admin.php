@@ -5,6 +5,7 @@
 use app\controllers\AdminController;
 use app\models\Post;
 use app\models\Category;
+use app\models\tags;
 use app\models\user;
 use zum\phpmvc\Application;
 use zum\phpmvc\middlewares\AdminMiddleware;
@@ -13,6 +14,7 @@ use zum\phpmvc\middlewares\AuthMiddleware;
 $post = new Post();
 $category = new Category();
 $user = new user();
+$tags = new tags()
 
 
 ?>
@@ -160,4 +162,3 @@ $user = new user();
 <script src="../../includes/js/bootstrap.bundle.js.map"></script>
 </body>
 </html>
-git

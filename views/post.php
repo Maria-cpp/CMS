@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
                             </small>
                         </h2>
                     </div>
-                    <p style="color: #472778">Content <?php echo $posts['content']?></p>
+                    <p style="color: #472778"><?php echo $posts['content']?></p>
                     <a href="posts">&larr; Back</a>
                 </div>
             </div>

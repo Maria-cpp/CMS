@@ -1,11 +1,17 @@
 <?php
 
 use app\models\Category;
+use app\models\tags;
+
 use zum\phpmvc\Application;
 
 $category = new Category();
 
 $categories = $category->fetchAll(Application::$app->db);
+
+$tag = new tags();
+
+$tags = $tag->fetchAll(Application::$app->db);
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,12 +52,12 @@ $categories = $category->fetchAll(Application::$app->db);
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="tags" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown02">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <a class="dropdown-toggle" href="" id="dropdown02" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                    <?php foreach ($tags as $tag){ ?>
+                        <li><a class="dropdown-item" href="tags?pid=<?php echo $tag['post_id']?>"> <?php echo $tag['tag_name'] ?> </a></li>
+                    <?php } ?>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="contact">Contact</a>
