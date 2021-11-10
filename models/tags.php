@@ -11,7 +11,7 @@ use zum\phpmvc\Model;
 
 class tags extends DbModel
 {
-    public int $id = 0;
+    public string $id = '';
     public string $tag_name = '';
     public string $post_id = '';
 

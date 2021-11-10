@@ -217,6 +217,6 @@ class AdminController extends Controller
     public function tags()
     {
         Application::$app->controller->setLayout('admin');
-        return $this->render('tags');
+        return $this->render('admin/tags');
     }
 }

@@ -72,7 +72,7 @@ $tags = new tags()
                 </div>
             </li>
             <li class="dropdown">
-               <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
+               <a class="nav-link dropdown-toggle" href="tags" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown02">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
@@ -130,7 +130,7 @@ $tags = new tags()
                     <a href="users" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $user->count() ?></span></a>
                     <a href="posts" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Posts <span class="badge"> <?php echo $post->count() ?> </span></a>
                     <a href="category" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> category<span class="badge"> <?php echo $category->count() ?> </span></a>
-                    <a href="#" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
+                    <a href="tags" class="list-group-item list-group-item-action"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Tags<span class="badge"> 100 </span></a>
                 </div>
                 <div class="well">
                     <h4>Disk Space used </h4>

@@ -73,8 +73,8 @@ $app->router->post('/admin/edituser' , [AdminController::class, 'edituser']);
 $app->router->get('/category' , [SiteController::class, 'category']);
 $app->router->post('/category' , [SiteController::class, 'category']);
 
-$app->router->get('/tags' , [AdminController::class, 'tags']);
-$app->router->post('/tags' , [AdminController::class, 'tags']);
+$app->router->get('/admin/tags' , [AdminController::class, 'tags']);
+$app->router->post('/admin/tags' , [AdminController::class, 'tags']);
 
 $app->router->get('/admin/users' , [AdminController::class, 'users']);
 $app->router->post('/admin/users' , [AdminController::class, 'users']);
