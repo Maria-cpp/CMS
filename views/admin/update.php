@@ -27,7 +27,7 @@ function test_input($data): string
 if (isset($_GET["id"])) {
     $title = test_input($_GET["title"]);
     $content = test_input(nl2br($_GET["content"]));
-    $cid = test_input($_GET["id"]);
+    $cid = test_input($_GET["category_id"]);
     $tags = test_input($_GET["articleTags"]);
     $id = test_input($_GET["id"]);
     if (empty($title) or empty($content)) {
