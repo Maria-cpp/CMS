@@ -4,6 +4,7 @@
 
 use app\models\Category;
 use app\models\Post;
+use app\models\tags;
 use app\models\user;
 use zum\phpmvc\Application;
 
@@ -12,7 +13,7 @@ $categories = $category->fetchAll(Application::$app->db);
 
 $this->title = 'post';
 $user = new user();
-
+$tag = new tags();
 $post = new Post();
 $title = $content  = $cid = $id = "";
 
@@ -29,6 +30,7 @@ if (isset($_GET["id"])) {
     $content = test_input(nl2br($_GET["content"]));
     $cid = test_input($_GET["category_id"]);
     $tags = test_input($_GET["articleTags"]);
+    $tag->findtag($tags);
     $id = test_input($_GET["id"]);
     if (empty($title) or empty($content)) {
         $error = 'All fields are required!';

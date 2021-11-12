@@ -42,4 +42,19 @@ class tags extends DbModel
         $data = $this->findOne(['id' => $id], Application::$app->db);
         return $data->tag_name;
     }
+
+
+    public function findtag(string $tags): string {
+        
+        $tagsArr = explode(',', $tags);
+
+        $AllTags =$this->fetchAll(Application::$app->db);
+
+        foreach($tagsArr as $tag){
+            // check if the tag is already present or not
+        }
+
+
+
+    }
 }

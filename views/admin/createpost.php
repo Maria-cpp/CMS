@@ -3,16 +3,22 @@
 /** @var $this \zum\phpmvc\View */
 
 use app\models\Category;
+use app\models\tags;
+
 use app\models\Post;
 use zum\phpmvc\Application;
 
 $category = new Category();
 $categories = $category->fetchAll(Application::$app->db);
 
+$tag = new tags();
+
 
 $this->title = 'addpost';
 
 $user = new Post();
+
+ 
 
 if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['content'])) {
     $title = $_POST['title'];
@@ -21,6 +27,9 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
     $time = date('Y-m-d H:i:s');
     $content = $_POST['content'];
     $tags = $_POST['articleTags'];
+    
+    $tag->findtag($tags);
+
     $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, created_at, tags, category_id) VALUES ('$title','$author','$content','$time','$tags','$cid');");
     $query->execute();
     header("location: posts");
