@@ -72,4 +72,11 @@ class Post extends DbModel
     {
         return 'id';
     }
+
+    public function GetRecedntPostID()
+    {
+        $query = Application::$app->db->pdo->prepare("SELECT * FROM posts WHERE id=(SELECT max(id) FROM posts);");
+        $query->execute();
+        return $query->fetchObject(static::class);
+    }
 }

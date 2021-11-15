@@ -16,7 +16,7 @@ $tag = new tags();
 
 $this->title = 'addpost';
 
-$user = new Post();
+$post = new Post();
 
  
 
@@ -26,12 +26,17 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
     $cid = $_POST['category_id'];
     $time = date('Y-m-d H:i:s');
     $content = $_POST['content'];
-    $tags = $_POST['articleTags'];
+    $tagsdata = $_POST['articleTags'];
     
-    $tag->findtag($tags);
+    $tag->findtag($tagsdata);
 
-    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, created_at, tags, category_id) VALUES ('$title','$author','$content','$time','$tags','$cid');");
+    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, created_at, tags, category_id) VALUES ('$title','$author','$content','$time','$tagsdata','$cid');");
     $query->execute();
+    
+    $data = $post->GetRecedntPostID();
+
+    $tag->updatePostIds($data->id, $tagsdata);
+
     header("location: posts");
 }
 ?>

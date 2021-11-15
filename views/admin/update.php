@@ -29,8 +29,8 @@ if (isset($_GET["id"])) {
     $title = test_input($_GET["title"]);
     $content = test_input(nl2br($_GET["content"]));
     $cid = test_input($_GET["category_id"]);
-    $tags = test_input($_GET["articleTags"]);
-    $tag->findtag($tags);
+    $tagsdata = test_input($_GET["articleTags"]);
+    $tag->findtag($tagsdata);
     $id = test_input($_GET["id"]);
     if (empty($title) or empty($content)) {
         $error = 'All fields are required!';
@@ -40,11 +40,14 @@ if (isset($_GET["id"])) {
         $query->bindValue(1, $title);
         $query->bindValue(2, $content);
         $query->bindValue(3, date('Y-m-d H:i:s'));
-        $query->bindValue(4, $tags);
+        $query->bindValue(4, $tagsdata);
         $query->bindValue(5, $cid);
         $query->bindValue(6, $id);
 
         $query->execute();
+
+        $tag->updatePostIds($id, $tagsdata);
+        
         header("location: post?id=". "$id");
 
     }

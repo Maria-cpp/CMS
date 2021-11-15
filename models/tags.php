@@ -58,17 +58,51 @@ class tags extends DbModel
         $result=array();
         $i=0;
         
-            for($i; $i<sizeof($tagsArr); $i++){
-                if(!in_array($tagsArr[$i], $tagsNames))
-                {
-                    echo $tagsArr[$i];
-                    array_push($result, $tagsArr[$i]);
-                    $name = $tagsArr[$i];
-                    echo $name;
-                    $query = Application::$app->db->pdo->prepare("INSERT INTO tags (tag_name) VALUES ('$name');");
-                    $query->execute();
-                }
-            }  
+        for($i; $i<sizeof($tagsArr); $i++){
+            if(!in_array($tagsArr[$i], $tagsNames))
+            {
+                array_push($result, $tagsArr[$i]);
+                $name = $tagsArr[$i];
+                $query = Application::$app->db->pdo->prepare("INSERT INTO tags (tag_name) VALUES ('$name');");
+                $query->execute();
+            }
+        }  
         return;  
+    }
+
+    //to update post Ids in tags table
+    function updatePostIds(int $pid, string $tags){
+
+        $tagsArr = explode(',', $tags);
+        
+        $i=0;
+        for($i; $i<sizeof($tagsArr); $i++){
+
+            $data = $this->findOne(['tag_name' => $tagsArr[$i]], Application::$app->db);
+            $postsID = $data->post_id;
+            $IDs = explode(',', $postsID);
+
+            $update=false;
+
+            if($IDs[0]==0){
+                $update = true;
+                $postsID=$pid;
+            }
+            else
+            {
+                if(!in_array($pid, $IDs))
+                {
+                    $update = true;
+                    $postsID = $postsID . "," . $pid;
+                }
+            }
+        
+            if(update){
+                $query = Application::$app->db->pdo->prepare("UPDATE tags SET post_id =? WHERE id=?;");
+                $query->bindValue(1, $postsID);
+                $query->bindValue(2, $data->id);
+                $query->execute();
+            }
+        }
     }
 }
