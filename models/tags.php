@@ -44,17 +44,31 @@ class tags extends DbModel
     }
 
 
-    public function findtag(string $tags): string {
+    public function findtag(string $tags) {
         
         $tagsArr = explode(',', $tags);
 
         $AllTags =$this->fetchAll(Application::$app->db);
 
-        foreach($tagsArr as $tag){
-            // check if the tag is already present or not
+        $tagsNames = array();
+        foreach($AllTags as $DbTags){
+            array_push($tagsNames, $DbTags['tag_name']);
         }
 
-
-
+        $result=array();
+        $i=0;
+        
+            for($i; $i<sizeof($tagsArr); $i++){
+                if(!in_array($tagsArr[$i], $tagsNames))
+                {
+                    echo $tagsArr[$i];
+                    array_push($result, $tagsArr[$i]);
+                    $name = $tagsArr[$i];
+                    echo $name;
+                    $query = Application::$app->db->pdo->prepare("INSERT INTO tags (tag_name) VALUES ('$name');");
+                    $query->execute();
+                }
+            }  
+        return;  
     }
 }
