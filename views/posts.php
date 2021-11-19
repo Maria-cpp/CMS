@@ -38,8 +38,10 @@ if($_SESSION['role']==='admin') {
                         <?php foreach ($posts as $post){ echo "<br>"; ?>
                         <table class="table table-striped table-hover" id="poststable">
                             <tbody>
-                                <tr><td colspan="3" style="font-size: large; text-align: center"><?php echo $post['title'];?></td></tr>
-                                <tr><td colspan="3" style="font-size: larger; text-align:justify-all"><?php echo $post['content'];?></td></tr>
+                                <tr><td colspan="3" style="font-size: large; font-weight: bold; text-align: center"><?php echo $post['title'];?></td></tr>
+                                <tr><td colspan="1" style="font-size: larger; text-align:center"> 
+                                <img width=300px height=auto src="<?php echo$post['image_URL']; ?>" alt="myPic" /> </td>
+                                <td colspan="2" style="font-size: larger; text-align:justify-all"><?php echo $post['content'];?></td></tr>
                                 <tr>
                                     <td style="width: 200px; text-align: center">Author : <?php echo $post['author']; ?></td>
                                     <td style="width: 200px; text-align: center">Published On :  <?php echo date('l, jS' , $post['created_at']) ?></td>
@@ -52,7 +54,7 @@ if($_SESSION['role']==='admin') {
                             </tbody>
                         </table>
 
-                        <?php echo "<br>"; } ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

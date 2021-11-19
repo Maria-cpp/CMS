@@ -48,7 +48,8 @@ if (isset($_GET['id'])) {
                             </small>
                         </h2>
                     </div>
-                    <p style="color: #472778"><?php echo $posts['content']?></p>
+                    <div><img width=300px height=auto src="<?php echo$posts['image_URL']; ?>" alt="myPic" /> </div>
+                    <h3><p style="color: #472778"><?php echo $posts['content']?></p></h3>
                     <a href="posts">&larr; Back</a>
                 </div>
             </div>

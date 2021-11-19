@@ -41,7 +41,9 @@ if (isset($_GET['pid'])) {
                                     <table class="table table-striped table-hover" id="poststable">
                                      <tbody>
                                      <tr><td colspan="3" style="font-size: large; text-align: center"><?php echo $data['title'];?></td></tr>
-                                     <tr><td colspan="3" style="font-size: larger; text-align:justify-all"><?php echo $data['content'];?></td></tr>
+                                     <tr><td colspan="1" style="font-size: larger; text-align:center"> 
+                                        <img width=300px height=auto src="<?php echo$data['image_URL']; ?>" alt="myPic" /> </td>
+                                        <td colspan="2" style="font-size: larger; text-align:justify-all"><?php echo $data['content'];?></td></tr>
                                      <tr>
                                          <td style="width: 200px; text-align: center">Author : <?php echo $data['author']; ?></td>
                                          <td style="width: 200px; text-align: center">Published On :  <?php echo date('l, jS' , $data['created_at']) ?></td>
