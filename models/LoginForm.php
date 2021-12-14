@@ -3,12 +3,10 @@
 namespace app\models;
 
 
-use zum\phpmvc\AdminApp;
 use zum\phpmvc\Application;
-use zum\phpmvc\DbModel;
-use zum\phpmvc\Model;
+use zum\phpmvc\db\DbModel;
 
-class LoginForm extends Model
+class LoginForm extends DBModel
 {
     public string $email='';
     public string $password='';
@@ -63,5 +61,25 @@ class LoginForm extends Model
             'email'=>'Your Email',
             'password' => 'Password'
         ];
+    }
+
+
+    public function tableName():string{
+        return 'users';
+    }
+
+    public function primaryKey():string{
+        return 'id';
+    }
+
+    public function attributes(): array
+    {
+        return ['email', 'password'];
+    }
+
+    public function setAttributres(string $email, string $password)
+    {
+       $this->email = $email;
+       $this->password=$password;
     }
 }

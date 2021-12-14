@@ -6,6 +6,7 @@ namespace app\models;
 
 use zum\phpmvc\Application;
 use zum\phpmvc\db\DbModel;
+use app\models\LoginForm;
 
 class Post extends DbModel
 {
@@ -29,7 +30,8 @@ class Post extends DbModel
     {
 
         $userdata = Post::findOne(['id'=> $this->id]);
-        if(!$this->sessionCredentials($userdata)){
+        $obj =  new LoginForm();
+        if(!$obj->sessionCredentials($userdata)){
             return false;
         }
         return Application::$app->login($userdata);
@@ -39,9 +41,11 @@ class Post extends DbModel
     public function labels(): array
     {
         return [
-            'title' => 'Title',
-            'image' => 'Image',
-            'description' => 'Description',
+            'title' => 'Enter Title',
+            'image' => 'upload Image',
+            'content' => 'Description',
+            'tag'=>'Tags',
+            'image'=> 'Choose Image'
         ];
     }
 
@@ -61,12 +65,23 @@ class Post extends DbModel
         return ['id', 'author', 'title', 'content', 'image_URL', 'category_id', 'tag'];
     }
 
-    public function setAttributres(int $id, string $author, string $title, string $content)
+    public function setAttributres(
+        int $id, 
+        string $author, 
+        string $title, 
+        string $content, 
+        string $image_URL,
+        int $categoryID, 
+        string $tags
+        )
     {
        $this->id = $id;
        $this->author = $author;
        $this->title=$title;
        $this->content=$content;
+       $this->image_URL = $image_URL;
+       $this->category_id = $categoryID;
+       $this->tags = $tags;
     }
 
     public function primaryKey(): string
