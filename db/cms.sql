@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 10, 2021 at 06:07 PM
+-- Generation Time: Dec 06, 2021 at 03:21 PM
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -42,7 +42,8 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 (2, 'Health'),
 (3, 'Sports'),
 (4, 'Social'),
-(5, 'Food');
+(5, 'Food'),
+(9, 'Technology');
 
 -- --------------------------------------------------------
 
@@ -55,6 +56,7 @@ CREATE TABLE `posts` (
   `title` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `content` varchar(512) NOT NULL,
+  `image_URL` varchar(255) NOT NULL DEFAULT './src/images/welcome.jpg',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tags` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
@@ -65,12 +67,16 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `author`, `content`, `created_at`, `updated_at`, `tags`, `category_id`) VALUES
-(1, 'Wordpress', 'Maria Naseem', 'WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database. Features include a plugin architecture and a template system, referred to within WordPress as Themes.', '2021-09-08 10:28:14', '2021-11-10 07:54:44', 'webcontent,framework', 4),
-(2, 'MUmmy', 'Muhammad Usman', 'Normally a WordPress developer will need to perform the task of filling up an empty theme with dummy content, and doing this manually can be really time consuming, the main reasons this plugin was create was to speed up this process.&lt;br /&gt;', '2021-09-08 10:28:20', '2021-09-14 11:16:14', 'Webcontent', 4),
-(3, ' Data', 'Muhammad Usman', 'Normally a WordPress developer will need to perform the task of filling up an empty theme with dummy content, and doing this manually can be really time consuming, the main reasons this plugin was create was to speed up this process.\r\n', '2021-09-08 10:28:20', '2021-09-08 10:28:20', 'framework', 2),
-(5, 'zeenu', 'Maria Naseem', 'Zeenu I love you!', '2021-09-15 12:07:30', '2021-10-28 12:51:16', 'Entertainment', 5),
-(7, 'abc', 'Maria Naseem', 'Entertainment is a form of activity that holds the attention and interest of an audience, or gives pleasure and delight. It can be an idea or a task, but is more likely to be one of\r\n', '2021-11-10 07:22:12', '2021-11-10 07:22:12', 'Entertainment,Fun', 1);
+INSERT INTO `posts` (`id`, `title`, `author`, `content`, `image_URL`, `created_at`, `updated_at`, `tags`, `category_id`) VALUES
+(1, 'Wordpress', 'Maria Naseem', 'WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database. Features include a plugin architecture and a template system, referred to within WordPress as Themes.', './src/images/wordpress.png', '2021-09-08 10:28:14', '2021-11-10 07:54:44', 'webcontent,framework', 9),
+(5, 'ZEENU', 'Maria Naseem', 'Zeenu I love you!', './src/images/zeenu.png', '2021-09-15 12:07:30', '2021-10-28 12:51:16', 'Entertainment', 1),
+(7, 'Entrtainment', 'Maria Naseem', 'Entertainment is a form of activity that holds the attention and interest of an audience, or gives pleasure and delight. It can be an idea or a task, but is more likely to be one of\r\n', './src/images/entertainment.png', '2021-11-10 07:22:12', '2021-11-10 07:22:12', 'Entertainment,Fun', 1),
+(11, 'Postman', 'Maria Naseem', 'Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.', './src/images/postman.png', '2021-11-12 12:39:32', '2021-11-12 12:39:32', 'postman', 9),
+(12, 'Nginx', 'Maria Naseem', 'By default the file is named nginx. conf and for NGINX Plus is placed in the /etc/nginx directory. (For NGINX Open Source , the location depends on the package system used to install NGINX and the operating system. It is typically one of /usr/local/nginx/conf, /etc/nginx, or /usr/local/etc/nginx.)', './src/images/NGINX-logo.png', '2021-11-12 12:41:21', '2021-11-12 12:41:21', 'nginx', 9),
+(13, 'Moralis', 'Maria Naseem', 'Moralis is a leading web development platform that offers everything that the user needs to create, host, and grow great dApps in one place. ... It is the quickest method to create and deploy decentralised applications (dApps) on Elrond, Ethereum, BSC, Solana, and Polygon (more coming).', './src/images/moralis.png', '2021-11-15 06:07:37', '2021-11-15 10:58:28', 'Technology,Tools,Blockchain,Fun', 9),
+(14, 'Github', 'Maria Naseem', 'GitHub, Inc. is a provider of Internet hosting for software development and version control using Git. It offers the distributed version control and source code management functionality of Git, plus its own features.', './src/images/GitHub-Mark.png', '2021-11-15 11:08:29', '2021-11-15 11:27:42', 'Technology,Tools', 9),
+(19, '', 'Maria Naseem', '', './src/images/welcome.jpg', '2021-11-23 09:44:38', '2021-11-23 09:44:38', '', 1),
+(20, 'image upload', 'Maria Naseem', 'zxdbiugvbjh gt ufg ilugt', './src/images/welcome.jpg', '2021-11-23 09:49:58', '2021-11-23 09:49:59', 'images', 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +86,7 @@ INSERT INTO `posts` (`id`, `title`, `author`, `content`, `created_at`, `updated_
 
 CREATE TABLE `tags` (
   `id` int NOT NULL,
-  `post_id` varchar(255) NOT NULL,
+  `post_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
   `tag_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -90,9 +96,14 @@ CREATE TABLE `tags` (
 
 INSERT INTO `tags` (`id`, `post_id`, `tag_name`) VALUES
 (1, '5,7', 'Entertainment'),
-(2, '1,2', 'Webcontent'),
+(2, '1', 'Webcontent'),
 (3, '1,3', 'framework'),
-(4, '7', 'Fun');
+(4, '7,13', 'Fun'),
+(5, '13,14', 'Technology'),
+(7, '13,14,18', 'Tools'),
+(8, '13', 'Blockchain'),
+(13, '19', ''),
+(14, '20', 'images');
 
 -- --------------------------------------------------------
 
@@ -117,15 +128,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `firstname`, `lastname`, `role`) VALUES
 (3, 'admin@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Maria Naseem', 'Maria', 'Naseem', 'admin'),
 (4, 'admin1@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Zeenat Usman', 'Zeenat', 'Usman', 'admin'),
-(7, 'JAnDoe@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Jan JAN', 'Jan', 'JAN', 'admin'),
+(7, 'JAnDoe@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Jan Doe', 'Jan', 'JAN', 'admin'),
 (13, 'MAno@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Mano Catou', 'Mano', 'Catou', 'user'),
-(14, 'miss@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' JKL  MNO', ' JKL', ' MNO', 'user'),
-(15, 'JAnDoe123@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' JKL  MNO', ' JKL', ' MNO', 'user'),
-(23, 'adminsadasf@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' JKL  MNO', ' JKL', ' MNO', 'user'),
-(24, 'admin@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' JKL  MNO', ' JKL', ' MNO', 'user'),
-(25, 'marianaseem99@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' JKL  MNO', ' JKL', ' MNO', 'user'),
-(26, 'abcdef@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' abc def', ' abc', 'def', 'admin'),
-(27, 'abckjl@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', ' abc jkl', ' abc', 'jkl', 'admin');
+(14, 'miss@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Miss Maria', ' JKL', ' MNO', 'user'),
+(15, 'JAnDoe123@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Jan Doe', ' JKL', ' MNO', 'user'),
+(23, 'adminsadasf@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Asif Ali', ' JKL', ' MNO', 'user'),
+(25, 'marianaseem99@gmail.com', '$2y$10$C0w1zLRCdVUT/d90FlD1ROqlDmhnfXeuYT2mQRI/NHPJZk7LYVk72', 'Maria Usman', ' JKL', ' MNO', 'user');
 
 --
 -- Indexes for dumped tables
@@ -163,19 +171,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`

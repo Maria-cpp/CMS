@@ -13,6 +13,7 @@ class Post extends DbModel
     public string $title = '';
     public string $author = '';
     public string $content = '';
+    public string $image_URL = '';
     public string $category_id = '';
     public string $tags = '';
 
@@ -57,7 +58,7 @@ class Post extends DbModel
 
     public function attributes(): array
     {
-        return ['id', 'author', 'title', 'content', 'image', 'category_id', 'tag'];
+        return ['id', 'author', 'title', 'content', 'image_URL', 'category_id', 'tag'];
     }
 
     public function setAttributres(int $id, string $author, string $title, string $content)
@@ -73,6 +74,7 @@ class Post extends DbModel
         return 'id';
     }
 
+    // add in DB Model class
     public function GetRecedntPostID()
     {
         $query = Application::$app->db->pdo->prepare("SELECT * FROM posts WHERE id=(SELECT max(id) FROM posts);");

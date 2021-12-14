@@ -62,7 +62,8 @@ if($_SESSION['role']==='admin') {
                                     <td style="width: 100px; text-align: center">:)</td>
                                     <td><?php echo $category->getCategoryName($post['category_id']);?></td>
                                     <td style="width: 160px"><?php echo $post['tags'];?></td>
-                                    <td><?php echo date('l, jS' , $post['created_at']) ?></td>
+                                    <td><?php echo date('l, jS' , $post['created_at']); ?></td>
+
                                     <td style="width: 60px; text-align: center"><a href="post?id=<?php echo $post['id']; ?>" class="mr-3" title="view" data-toggle="tooltip">
                                             <span class="glyphicon glyphicon-eye-open"></span></a>
                                     </td>
