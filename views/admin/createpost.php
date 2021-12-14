@@ -13,14 +13,12 @@ $categories = $category->fetchAll(Application::$app->db);
 
 $tag = new tags();
 
-
 $this->title = 'addpost';
 
 $post = new Post();
 
- 
-
 if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['content'])) {
+
     $title = $_POST['title'];
     $author = $_SESSION['username'];
     $cid = $_POST['category_id'];
@@ -30,7 +28,36 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
     
     $tag->findtag($tagsdata);
 
-    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, created_at, tags, category_id) VALUES ('$title','$author','$content','$time','$tagsdata','$cid');");
+    if(isset($_FILES['fileToUpload'])){
+        echo "in file if";
+        $errors= array();
+        $file_name = $_FILES['fileToUpload']['name'];
+        $file_size =$_FILES['fileToUpload']['size'];
+        $file_tmp =$_FILES['fileToUpload']['tmp_name'];
+        $file_type=$_FILES['fileToUpload']['type'];
+
+        $file_ext=strtolower(end(explode('.',$_FILES['fileToUpload']['name'])));
+        
+        $expensions= array("jpeg","jpg","png");
+        
+        if(in_array($file_ext,$expensions)=== false){
+           $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+        }
+        
+        if($file_size > 2097152){
+           $errors[]='File size must be excately 2 MB';
+        }
+        $image_URL;
+        if(empty($errors)==true){
+           move_uploaded_file($file_tmp,"./src/images/".$file_name);
+           $image_URL = "./src/images/".$file_name;
+           echo "Success";
+        }else{
+           print_r($errors);
+        }
+     }
+
+    $query = Application::$app->db->pdo->prepare("INSERT INTO posts (title, author, content, image_URL, created_at, tags, category_id) VALUES ('$title','$author','$content', '$image_URL', '$time','$tagsdata','$cid');");
     $query->execute();
     
     $data = $post->GetRecedntPostID();
@@ -46,7 +73,7 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
     <div class="panel">
         <div class="panel-body">
             <div class="row">
-                <form action="createpost" method="POST">
+                <form action="createpost" method="POST" enctype="multipart/form-data">
 
                     <table class="table table-striped table-hover" id="usertable">
                         <tbody>
@@ -66,6 +93,7 @@ if (isset($_POST['title']) or isset($_POST['category_id']) or isset($_POST['cont
                             <br><label>(Separated by comma without space)</label>          
                             </td>
                         </tr>
+                        <tr><td colspan="2"><input type="file" name="fileToUpload" id="fileToUpload"></td></tr>
                         <tr><td colspan="2"><input type="submit" name="submit" value="Add Post"></td></tr>
                         <tr><td colspan="2"><a href="posts">&larr; Back</a></td></tr>
                         </tbody>
