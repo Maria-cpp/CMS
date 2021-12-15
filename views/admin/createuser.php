@@ -8,20 +8,6 @@ use zum\phpmvc\Application;
 
 $this->title = 'user';
 
-$user = new user();
-
-if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['email']) or isset($_POST['role'])) {
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $username = $firstname . " " . $lastname;
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $role = $_POST['role'];
-    $query = Application::$app->db->pdo->prepare("INSERT INTO users (email, password, username, firstname, lastname, role) VALUES ('$email', '$password', '$username', '$firstname', '$lastname', '$role');");
-
-    $query->execute();
-    header("location: users");
-}
 ?>
 
 <div class="col-md-9">
@@ -29,20 +15,25 @@ if (isset($_POST['firstname']) or isset($_POST['lastname']) or isset($_POST['ema
     <div class="panel">
         <div class="panel-body">
             <div class="row">
-                    <form action="createuser" method="POST">
-                        <table class="table table-striped table-hover" id="usertable">
-                            <tbody>
-                            <tr><td><label>Enter Firstname : </label></td><td><input type="text" name="firstname"/></td></tr>
-                            <tr><td><label>Enter Lastname : </label></td><td><input type="text" name="lastname"/></td></tr>
-                            <tr><td><label>Enter Email : </label></td><td><input type="text" name="email"/></td></tr>
-                            <tr><td><label>Enter password : </label></td><td><input type="text" name="password"/></td></tr>
-                            <tr><td><label>Enter role : </label></td><td><input type="text" name="role"/></td></tr>
-                            <tr><td colspan="2"><input type="submit" name="submit" value="Add User"></td></tr>
-                            <tr><td colspan="2"><a href="users">&larr; Back</a></td></tr>
-                            </tbody>
-                        </table>
-                    </form>
+            <div class="my-post-form">
+                    <?php $form = \zum\phpmvc\form\Form::begin('', "post")?>
+                        <div class="row">
+                            <div class="col">
+                                <?php echo $form->field($model, 'firstname')?>
+                            </div>
+                            <div class="col">
+                            <?php echo $form->field($model, 'lastname')?>
+                            </div>
+                        </div>
+                            <?php echo $form->field($model, 'email')?>
+                            <?php echo $form->field($model, 'password')->passwordField()?>
+                            <?php echo $form->field($model, 'confirmPassword')->passwordField()?>
+                            <?php echo $form->field($model, 'role')?>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <?php \zum\phpmvc\form\Form::end() ?>
             </div>
+           </div>
         </div>
     </div>
 </div>
