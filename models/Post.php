@@ -17,24 +17,51 @@ class Post extends DbModel
     public string $image_URL = '';
     public string $category_id = '';
     public string $tags = '';
+    public string $name='';
+    public string $type='';
+    public int $size=0;
 
+    
     public function rules(): array
     {
         return [
             'title' =>[self::RULE_REQUIRED],
-            'description' =>[self::RULE_REQUIRED],
+            'content' =>[self::RULE_REQUIRED],
         ];
     }
 
-    public function Post($db): bool
-    {
 
-        $userdata = Post::findOne(['id'=> $this->id]);
-        $obj =  new LoginForm();
-        if(!$obj->sessionCredentials($userdata)){
-            return false;
-        }
-        return Application::$app->login($userdata);
+    public function imagecredentials(): bool{
+
+        $errors=[];
+        if(!empty($_FILES['image'])){
+            $this->type= strtolower(end(explode('.',$_FILES['image']['name'])));
+            $this->size= $_FILES['image']['size'];
+            $this->name= $_FILES['image']['name'];
+
+            $expensions= array("jpeg","jpg","png");
+    
+            if(in_array($this->type,$expensions)=== false){
+               $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+               $this->addErrorForRule($this->image_URL, self::RULE_IMAGE_TYPE );
+               return false;
+            }
+    
+            if($this->size > 2097152){
+               $errors[]='File size must be excately 2 MB';
+               $this->addErrorForRule($this->image_URL, self::RULE_IMAGE_SIZE );
+               return false;
+            }
+            
+            if(empty($this->errors())){
+                move_uploaded_file($_FILES['image']['tmp_name'],"./src/images/".$this->name);
+                $this->image_URL = "./src/images/".$this->name;
+                return true;
+            }
+
+        return false;
+            
+        }  
     }
 
 
@@ -42,9 +69,8 @@ class Post extends DbModel
     {
         return [
             'title' => 'Enter Title',
-            'image' => 'upload Image',
             'content' => 'Description',
-            'tag'=>'Tags',
+            'tags'=>'Tags',
             'image'=> 'Choose Image'
         ];
     }
@@ -62,31 +88,28 @@ class Post extends DbModel
 
     public function attributes(): array
     {
-        return ['id', 'author', 'title', 'content', 'image_URL', 'category_id', 'tag'];
+        return ['author', 'title', 'content', 'image_URL', 'category_id', 'tags'];
     }
-
-    public function setAttributres(
-        int $id, 
-        string $author, 
-        string $title, 
-        string $content, 
-        string $image_URL,
-        int $categoryID, 
-        string $tags
-        )
-    {
-       $this->id = $id;
-       $this->author = $author;
-       $this->title=$title;
-       $this->content=$content;
-       $this->image_URL = $image_URL;
-       $this->category_id = $categoryID;
-       $this->tags = $tags;
-    }
-
     public function primaryKey(): string
     {
         return 'id';
+    }
+
+    public function save(): bool
+    {
+        $tag = new tags();
+            
+        $tag->findtag($this->tags);
+
+        $this->author = $_SESSION['username'];
+
+        $ret = parent::save();
+            
+        $data = $this->GetRecedntPostID();
+
+        $tag->updatePostIds($data->id, $this->tags);
+
+        return $ret;
     }
 
     // add in DB Model class

@@ -3,10 +3,8 @@
 namespace app\controllers;
 
 use app\models\Category;
-use app\models\LoginForm;
 use app\models\Post;
 use app\models\user;
-use zum\phpmvc\AdminApp;
 use zum\phpmvc\Application;
 use zum\phpmvc\Controller;
 use zum\phpmvc\middlewares\AdminMiddleware;
@@ -112,9 +110,11 @@ class AdminController extends Controller
         $user = new user();
         if($request->isPost()) {
             $user->loadData($request->getBody());
-            if(Application::$app->session->get('role')==='admin'){
-                Application::$app->controller->setLayout('admin');
-                return $this->render('admin/createuser');
+            if($user->validate() && $user->save()){
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->render('admin/users');    
+                }
             }
             return $response->redirect('/_error');
         }
@@ -142,11 +142,14 @@ class AdminController extends Controller
         $post = new Post();
         if($request->isPost()) {
             $post->loadData($request->getBody());
-            if(Application::$app->session->get('role')==='admin'){
-                Application::$app->controller->setLayout('admin');
-                return $this->render('admin/createpost');
+            if($post->validate() && $post->save() && $post->imagecredentials())
+            {
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->render('admin/posts');
+                }
+                return $response->redirect('/_error');
             }
-            return $response->redirect('/_error');
         }
         return $this->render('admin/createpost', [
             'model' =>$post
