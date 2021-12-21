@@ -34,10 +34,10 @@ class Post extends DbModel
     public function imagecredentials(): bool{
 
         $errors=[];
-        if(!empty($_FILES['image'])){
-            $this->type= strtolower(end(explode('.',$_FILES['image']['name'])));
-            $this->size= $_FILES['image']['size'];
-            $this->name= $_FILES['image']['name'];
+        if(!empty($_FILES['image_URL'])){
+            $this->type= strtolower(end(explode('.',$_FILES['image_URL']['name'])));
+            $this->size= $_FILES['image_URL']['size'];
+            $this->name= $_FILES['image_URL']['name'];
 
             $expensions= array("jpeg","jpg","png");
     
@@ -54,8 +54,10 @@ class Post extends DbModel
             }
             
             if(empty($this->errors())){
-                move_uploaded_file($_FILES['image']['tmp_name'],"./src/images/".$this->name);
+                print_r("in no errors<br>");
+                move_uploaded_file($_FILES['image_URL']['tmp_name'],"./src/images/".$this->name);
                 $this->image_URL = "./src/images/".$this->name;
+                print_r($this->image_URL);
                 return true;
             }
 
@@ -71,7 +73,7 @@ class Post extends DbModel
             'title' => 'Enter Title',
             'content' => 'Description',
             'tags'=>'Tags',
-            'image'=> 'Choose Image'
+            'image_URL'=> 'Choose Image'
         ];
     }
 

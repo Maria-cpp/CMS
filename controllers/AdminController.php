@@ -142,7 +142,7 @@ class AdminController extends Controller
         $post = new Post();
         if($request->isPost()) {
             $post->loadData($request->getBody());
-            if($post->validate() && $post->save() && $post->imagecredentials())
+            if($post->validate() && $post->imagecredentials() && $post->save())
             {
                 if(Application::$app->session->get('role')==='admin'){
                     Application::$app->controller->setLayout('admin');

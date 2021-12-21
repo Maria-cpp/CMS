@@ -37,7 +37,7 @@ $post = new Post();
                 <?php echo $form->field($model, 'tags')?>
                 <label>(Separated by comma without space)</label>
                 
-                <?php echo $form->field($model, 'image')->fileField()?>
+                <?php echo $form->field($model, 'image_URL')->fileField()?>
 
 
                 <button type="submit" class="btn btn-primary">Add Post</button>
