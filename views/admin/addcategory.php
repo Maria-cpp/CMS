@@ -8,15 +8,6 @@ use zum\phpmvc\Application;
 
 $this->title = 'category';
 
-$user = new Category();
-
-if (isset($_POST['category_name'])) {
-    $name = $_POST['category_name'];
-    $query = Application::$app->db->pdo->prepare("INSERT INTO category (category_name) VALUES ('$name');");
-
-    $query->execute();
-    header("location: category");
-}
 ?>
 
 <div class="col-md-9">
@@ -24,15 +15,13 @@ if (isset($_POST['category_name'])) {
     <div class="panel">
         <div class="panel-body">
             <div class="row">
-                    <form action="addcategory" method="POST">
-                        <table class="table table-striped table-hover" id="categorytable">
-                            <tbody>
-                            <tr><td><label>Enter Category Name : </label></td><td><input type="text" name="category_name"/></td></tr>
-                            <tr><td colspan="2"><input type="submit" name="submit" value="Add Category"></td></tr>
-                            <tr><td colspan="2"><a href="category">&larr; Back</a></td></tr>
-                            </tbody>
-                        </table>
-                    </form>
+                <div class="my-post-form">
+                        <?php $form = \zum\phpmvc\form\Form::begin('', "post")?>
+                            <?php echo $form->field($model, 'category_name')?>
+                            <button type="submit" class="btn btn-primary">Submit</button>  
+                            <a href="category">&larr; Back</a>
+                        <?php \zum\phpmvc\form\Form::end() ?>
+                </div>
             </div>
         </div>
     </div>

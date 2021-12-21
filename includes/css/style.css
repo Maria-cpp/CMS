@@ -134,6 +134,12 @@ body{
     justify-content: center;
 }
 
+.my-post-form a {
+        color:white;
+        background-color: transparent;
+        text-decoration: none;
+}
+
 .my-contact-form{
     width:600px;
     padding: 20px;

@@ -1,13 +1,9 @@
 <?php
 
-
 namespace app\models;
 
-
-use JetBrains\PhpStorm\ArrayShape;
 use zum\phpmvc\Application;
 use zum\phpmvc\db\DbModel;
-use zum\phpmvc\Model;
 
 class Category extends DbModel
 {
@@ -17,8 +13,7 @@ class Category extends DbModel
     public function rules(): array
     {
         return [
-            'title' =>[self::RULE_REQUIRED],
-            'description' =>[self::RULE_REQUIRED],
+            'category_name' =>[self::RULE_REQUIRED],
         ];
     }
 
@@ -29,7 +24,7 @@ class Category extends DbModel
 
     public function attributes(): array
     {
-        return ['id', 'category_name'];
+        return ['category_name'];
     }
 
     public function primaryKey(): string
@@ -40,5 +35,12 @@ class Category extends DbModel
     public function getCategoryName(string $id){
         $data = $this->findOne(['id' => $id], Application::$app->db);
         return $data->category_name;
+    }
+
+    public function labels(): array
+    {
+            return [
+                'category_name' => 'Enter Category Name'
+            ];
     }
 }

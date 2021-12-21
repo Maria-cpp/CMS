@@ -47,10 +47,8 @@ $app->router->get('/admin/dashboard' , [AdminController::class, 'dashboard']);
 $app->router->post('/admin/dashboard' , [AdminController::class, 'dashboard']);
 
 $app->router->get('/admin/posts' , [AdminController::class, 'posts']);
-$app->router->post('/admin/posts' , [AdminController::class, 'posts']);
 
 $app->router->get('/admin/post' , [AdminController::class, 'post']);
-$app->router->post('/admin/post' , [AdminController::class, 'post']);
 
 $app->router->get('/admin/editpost' , [AdminController::class, 'edit']);
 $app->router->post('/admin/editpost' , [AdminController::class, 'edit']);
@@ -77,16 +75,12 @@ $app->router->get('/admin/tags' , [AdminController::class, 'tags']);
 $app->router->post('/admin/tags' , [AdminController::class, 'tags']);
 
 $app->router->get('/admin/users' , [AdminController::class, 'users']);
-$app->router->post('/admin/users' , [AdminController::class, 'users']);
 
 $app->router->get('/admin/user' , [AdminController::class, 'user']);
-$app->router->post('/admin/user' , [AdminController::class, 'user']);
 
 $app->router->get('/admin/category' , [AdminController::class, 'category']);
-$app->router->post('/admin/category' , [AdminController::class, 'category']);
 
 $app->router->get('/tags' , [SiteController::class, 'tags']);
-$app->router->post('/tags' , [SiteController::class, 'tags']);
 
 /*$app->router->get('/user' , [SiteController::class, 'user']);
 $app->router->post('/user' , [SiteController::class, 'user']);*/

@@ -31,6 +31,8 @@ $this->title = 'user';
                             <?php echo $form->field($model, 'role')?>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="users">&larr; Back</a>
+
                     <?php \zum\phpmvc\form\Form::end() ?>
             </div>
            </div>

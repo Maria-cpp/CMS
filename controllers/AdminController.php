@@ -38,17 +38,6 @@ class AdminController extends Controller
 
     public function posts(Request $request, Response $response){
         $post = new Post();
-        if($request->isPost()) {
-            $post->loadData($request->getBody());
-            if($post->validate() && $post->send()) {
-                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
-                if(Application::$app->session->get('role')==='admin'){
-                    Application::$app->controller->setLayout('admin');
-                    return $this->render('admin/posts');
-                }
-                return $response->redirect('/_error');
-            }
-        }
         return $this->render('admin/posts', [
             'model' =>$post
         ]);
@@ -57,17 +46,6 @@ class AdminController extends Controller
 
     public function post(Request $request, Response $response){
         $post = new Post();
-        if($request->isPost()) {
-            $post->loadData($request->getBody());
-            if($post->validate() && $post->send()) {
-                Application::$app->session->setFlash('success', 'Thanks for creating Blog.');
-                if(Application::$app->session->get('role')==='admin'){
-                    Application::$app->controller->setLayout('admin');
-                    return $this->render('admin/post');
-                }
-                return $response->redirect('/_error');
-            }
-        }
         return $this->render('admin/post', [
             'model' =>$post
         ]);
@@ -127,9 +105,11 @@ class AdminController extends Controller
         $category = new Category();
         if($request->isPost()) {
             $category->loadData($request->getBody());
-            if(Application::$app->session->get('role')==='admin'){
-                Application::$app->controller->setLayout('admin');
-                return $this->render('admin/addcategory');
+            if($category->validate() && $category->save()){
+                if(Application::$app->session->get('role')==='admin'){
+                    Application::$app->controller->setLayout('admin');
+                    return $this->render('admin/category');
+                }
             }
             return $response->redirect('/_error');
         }

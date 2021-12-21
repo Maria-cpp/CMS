@@ -33,14 +33,16 @@ $post = new Post();
                         </option>
                     <?php }?>
                 </select><br/>
+
                 <?php echo $form->textarea($model, 'content')?>
+            
                 <?php echo $form->field($model, 'tags')?>
                 <label>(Separated by comma without space)</label>
-                
+            
                 <?php echo $form->field($model, 'image_URL')->fileField()?>
-
-
+            
                 <button type="submit" class="btn btn-primary">Add Post</button>
+                <a href="posts">&larr; Back</a>
                 <?php \zum\phpmvc\form\Form::end() ?>
 
                 </div>
