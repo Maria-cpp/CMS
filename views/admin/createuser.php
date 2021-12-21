@@ -2,10 +2,6 @@
 /** @var $model \app\models\user */
 /** @var $this \zum\phpmvc\View */
 
-use app\models\user;
-use zum\phpmvc\Application;
-
-
 $this->title = 'user';
 
 ?>

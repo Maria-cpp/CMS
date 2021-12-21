@@ -3,8 +3,6 @@
 /** @var $this \zum\phpmvc\View */
 
 use app\models\Category;
-use app\models\tags;
-
 use app\models\Post;
 use zum\phpmvc\Application;
 

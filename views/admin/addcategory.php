@@ -2,10 +2,6 @@
 /** @var $model \app\models\Category */
 /** @var $this \zum\phpmvc\View */
 
-use app\models\Category;
-use zum\phpmvc\Application;
-
-
 $this->title = 'category';
 
 ?>

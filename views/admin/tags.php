@@ -3,7 +3,6 @@
 /** @var $this \zum\phpmvc\View */
 
 use app\models\tags;
-use app\models\Post;
 use zum\phpmvc\Application;
 
 $tag = new tags();
@@ -22,7 +21,7 @@ if($_SESSION['role']==='admin') {
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-secondary" type="button" id="category" aria-expanded="false">
-                        <a href="addcategory" class="btn">Add New</a></button>
+                        <a href="#" class="btn">Add New</a></button>
                 </div>
             </div>
         </div>
